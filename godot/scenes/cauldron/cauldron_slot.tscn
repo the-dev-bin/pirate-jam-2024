@@ -9,7 +9,6 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
-border_blend = true
 
 [node name="CauldronSlot" type="PanelContainer"]
 custom_minimum_size = Vector2(34, 34)
