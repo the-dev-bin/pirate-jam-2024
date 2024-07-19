@@ -2,16 +2,12 @@
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
-[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_h1yxu"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
-[ext_resource type="Script" path="res://scenes/node_example.gd" id="3_a5686"]
+[ext_resource type="PackedScene" uid="uid://bq4bpebcy5h4d" path="res://scenes/component_pouch/component_pouch.tscn" id="5_hsp0c"]
+[ext_resource type="PackedScene" uid="uid://sh2tec1kvvnv" path="res://scenes/cauldron/cauldron.tscn" id="6_t6kr8"]
 
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_objyc")
-
-[node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
-texture = ExtResource("2_h1yxu")
-script = ExtResource("3_a5686")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -23,3 +19,14 @@ visible = false
 unique_name_in_owner = true
 process_mode = 2
 visible = false
+
+[node name="Cauldron" parent="." instance=ExtResource("6_t6kr8")]
+offset_left = 94.0
+offset_right = 437.0
+offset_bottom = 273.0
+
+[node name="ComponentPouch" parent="." instance=ExtResource("5_hsp0c")]
+offset_left = 84.0
+offset_top = 274.0
+offset_right = 461.0
+offset_bottom = 318.0

@@ -1,0 +1,102 @@
+[gd_scene load_steps=3 format=3 uid="uid://sh2tec1kvvnv"]
+
+[ext_resource type="Script" path="res://scenes/cauldron/cauldron.gd" id="1_rnlaf"]
+[ext_resource type="PackedScene" uid="uid://cylhp2h2lws0x" path="res://scenes/cauldron/cauldron_slot.tscn" id="2_h1aey"]
+
+[node name="Cauldron" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("1_rnlaf")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+columns = 5
+
+[node name="CauldronSlot" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot2" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot3" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot4" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot5" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot6" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot7" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot8" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot9" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot10" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot11" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot12" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot13" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot14" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot15" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot16" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot17" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot18" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="CenterContainer/GridContainer"]
+layout_mode = 2
+
+[node name="CauldronSlot19" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot20" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot21" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot22" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot23" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
+
+[node name="CauldronSlot24" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+layout_mode = 2
