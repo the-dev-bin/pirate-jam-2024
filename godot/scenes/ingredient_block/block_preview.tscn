@@ -13,6 +13,7 @@ grow_vertical = 2
 script = ExtResource("1_wojk3")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = -16.0
 offset_top = -16.0

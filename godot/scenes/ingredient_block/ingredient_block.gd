@@ -1,19 +1,50 @@
 class_name IngredientBlock
 extends Control
 
-@export var block_data = 'godot'
 @export var preview_scene: PackedScene
+@export var ingredient_resource: Ingredient
+@export var block_size = 32
+var block_table
+var max_height = 0
+var max_width = 0
 
 
-func setup(_block_data):
-	# eventually this will handle complex block shapes and all that jazz
-	pass
+var on_board = false
+
+func _ready():
+	setup(ingredient_resource)
+
+
+func setup(_block_data: Ingredient):
+	if !_block_data and !ingredient_resource:
+		return
+	ingredient_resource = _block_data
+	parse_structure(ingredient_resource.structure)
+	var size_vector = Vector2(max_width * block_size + block_size, max_height * block_size + block_size )
+	size = size_vector
+	$TextureRect.size = size_vector
+	$TextureRect.texture = ResourceLoader.load(ingredient_resource.image)
+	if on_board:
+		mouse_filter = MOUSE_FILTER_IGNORE
+
+func parse_structure(points: Array[Vector2]):
+	print(points)
+	for point in points:
+		if point[0] > max_width:
+			max_width = point[0]
+		if point[1] > max_height:
+			max_height = point[1]
+
+
 
 func _get_drag_data(_at_position:Vector2)->Variant:
+	if on_board:
+		return null
+	# eventually check if the math works out for actually clicking on the right thing. Might need to make it so dragging for the cauldron items is managed by the cauldron itself since there might be issues with overlapping
 
 	var preview = preview_scene.instantiate()
-	preview.setup(block_data)
-	var drag_data = ItemDrag.new(self, block_data, preview)
+	preview.setup(ingredient_resource)
+	var drag_data = ItemDrag.new(self, ingredient_resource, preview)
 	set_drag_preview(drag_data.preview)
 
 	modulate = Color(1.0,1.0,1.0,0.4)

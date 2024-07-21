@@ -21,12 +21,13 @@ process_mode = 2
 visible = false
 
 [node name="Cauldron" parent="." instance=ExtResource("6_t6kr8")]
-offset_left = 94.0
-offset_right = 437.0
-offset_bottom = 273.0
+offset_left = 55.0
+offset_top = 3.0
+offset_right = 488.0
+offset_bottom = 204.0
 
 [node name="ComponentPouch" parent="." instance=ExtResource("5_hsp0c")]
-offset_left = 84.0
-offset_top = 274.0
-offset_right = 461.0
-offset_bottom = 318.0
+offset_left = 54.0
+offset_top = 218.0
+offset_right = 491.0
+offset_bottom = 321.0

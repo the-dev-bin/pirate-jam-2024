@@ -1,5 +1,3 @@
-extends Control
+extends IngredientBlock
 
 
-func setup(block_data):
-	pass

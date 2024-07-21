@@ -5,10 +5,10 @@ signal drag_completed(data:ItemDrag)
 var source: Control = null
 var destination: Control = null
 
-var item: String
+var item: Ingredient
 var preview: Control
 
-func _init(_source: Control, _item: String, _preview: Control):
+func _init(_source: Control, _item: Ingredient, _preview: Control):
     self.source = _source
     self.item = _item
     self.preview = _preview

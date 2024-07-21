@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://sh2tec1kvvnv"]
+[gd_scene load_steps=4 format=3 uid="uid://sh2tec1kvvnv"]
 
 [ext_resource type="Script" path="res://scenes/cauldron/cauldron.gd" id="1_rnlaf"]
+[ext_resource type="PackedScene" uid="uid://5okf568cssch" path="res://scenes/ingredient_block/ingredient_block.tscn" id="2_3xr65"]
 [ext_resource type="PackedScene" uid="uid://cylhp2h2lws0x" path="res://scenes/cauldron/cauldron_slot.tscn" id="2_h1aey"]
 
 [node name="Cauldron" type="PanelContainer"]
@@ -11,14 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
 script = ExtResource("1_rnlaf")
+preview_scene = ExtResource("2_3xr65")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer"]
+[node name="SlotContainer" type="GridContainer" parent="CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
@@ -26,77 +27,77 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 5
 
-[node name="CauldronSlot" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot2" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot2" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot3" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot3" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot4" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot4" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot5" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot5" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot6" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot6" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot7" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot7" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot8" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot8" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot9" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot9" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot10" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot10" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot11" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot11" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot12" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot12" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot13" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot13" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot14" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot14" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot15" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot15" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot16" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot16" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot17" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot17" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot18" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot18" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="CenterContainer/GridContainer"]
+[node name="Control" type="Control" parent="CenterContainer/SlotContainer"]
 layout_mode = 2
 
-[node name="CauldronSlot19" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot19" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot20" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot20" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot21" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot21" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot22" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot22" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot23" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot23" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
-[node name="CauldronSlot24" parent="CenterContainer/GridContainer" instance=ExtResource("2_h1aey")]
+[node name="CauldronSlot24" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2

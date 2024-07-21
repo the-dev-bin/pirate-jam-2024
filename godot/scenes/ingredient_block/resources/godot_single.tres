@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://bahbxo6wc30m4"]
+
+[ext_resource type="Script" path="res://scenes/ingredient_block/ingredient_resource.gd" id="1_dmw50"]
+
+[resource]
+script = ExtResource("1_dmw50")
+image = "res://icon.svg"
+structure = Array[Vector2]([Vector2(0, 0)])

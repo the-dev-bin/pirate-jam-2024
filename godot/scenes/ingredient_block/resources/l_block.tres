@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=2 format=3 uid="uid://cyhd24hu3rkmq"]
+
+[ext_resource type="Script" path="res://scenes/ingredient_block/ingredient_resource.gd" id="1_vl3xs"]
+
+[resource]
+script = ExtResource("1_vl3xs")
+image = "res://assets/LBlock.svg"
+structure = Array[Vector2]([Vector2(0, 0), Vector2(0, 1), Vector2(1, 0)])

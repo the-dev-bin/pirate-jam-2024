@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://bq4bpebcy5h4d"]
+[gd_scene load_steps=4 format=3 uid="uid://bq4bpebcy5h4d"]
 
 [ext_resource type="PackedScene" uid="uid://5okf568cssch" path="res://scenes/ingredient_block/ingredient_block.tscn" id="1_1p3qv"]
+[ext_resource type="Resource" uid="uid://bahbxo6wc30m4" path="res://scenes/ingredient_block/resources/godot_single.tres" id="2_f04fr"]
+[ext_resource type="Resource" uid="uid://cyhd24hu3rkmq" path="res://scenes/ingredient_block/resources/l_block.tres" id="3_5ksyx"]
 
 [node name="ComponentPouch" type="PanelContainer"]
 anchors_preset = 15
@@ -19,30 +21,8 @@ alignment = 1
 
 [node name="IngredientBlock" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
 layout_mode = 2
+ingredient_resource = ExtResource("3_5ksyx")
 
 [node name="IngredientBlock2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
 layout_mode = 2
-
-[node name="IngredientBlock3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock4" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock5" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock6" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock7" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock8" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock9" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
-
-[node name="IngredientBlock10" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_1p3qv")]
-layout_mode = 2
+ingredient_resource = ExtResource("2_f04fr")
