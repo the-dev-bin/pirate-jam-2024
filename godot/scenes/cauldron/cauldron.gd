@@ -34,8 +34,6 @@ func _get_drag_data(_at_position:Vector2)->Variant:
 	var mouse = get_global_mouse_position()
 	var hovered_node = get_cell(mouse)
 	if hovered_node and hovered_node is CauldronSlot and hovered_node.ingredient:
-		print('hitting node')
-		print(hovered_node.board_position)
 		var preview = preview_scene.instantiate()
 		preview.setup(hovered_node.ingredient)
 		var drag_data = ItemDrag.new(hovered_node, hovered_node.ingredient, preview)
@@ -99,6 +97,7 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 	var mouse = get_global_mouse_position()
 
 	drag_data.destination = get_cell(mouse)
+
 	var temp = preview_scene.instantiate()
 	temp.on_board = true
 	temp.setup(data.item)
@@ -108,7 +107,8 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 	if drag_data.source is CauldronSlot:
 		drag_data.source.ingredient = null
 		if drag_data.source.parent:
-			drag_data.source.parent.remove_child(drag_data.source.parent.get_child(0))
+			drag_data.source = drag_data.source.parent
+			drag_data.source.remove_child(drag_data.source.parent.get_child(0))
 		else:
 			drag_data.source.remove_child(drag_data.source.get_child(0))
 		toggle_availablity_block(drag_data.source.board_position, drag_data.item.structure)
