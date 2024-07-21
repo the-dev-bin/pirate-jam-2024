@@ -3,6 +3,8 @@ extends PanelContainer
 @onready var slot_container = %SlotContainer
 @export var preview_scene: PackedScene
 
+signal toggle_tooltip(ingredient, position)
+
 # fill out when blocks are placed
 var board_state = {
 
@@ -11,7 +13,7 @@ var board_state = {
 @export var board_height = 5
 
 var pieces_on_board : Array[Ingredient] = []
-
+var hovering = false
 func _ready() -> void:
 	var slot_container_children = slot_container.get_children()
 	for i in slot_container_children.size():
@@ -27,6 +29,16 @@ func _ready() -> void:
 			slot.board_position = board_position
 	# init cauldron slot stuff, need a way of handling dynamic shapes of cauldrons. might have upgrades to shape later
 
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		var cell = get_cell(get_global_mouse_position())
+		if cell and cell is CauldronSlot and cell.ingredient:
+			hovering = true
+			toggle_tooltip.emit(cell.ingredient, cell.global_position + Vector2(30,30))
+		elif hovering:
+			hovering = false
+			toggle_tooltip.emit(null,null)
 
 
 
@@ -119,7 +131,3 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 		drag_data.source.visible = false
 	drag_data.destination.add_child(temp)
 	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.structure, drag_data.item, drag_data.destination)
-
-	# if block is bigger than one block need to go through and make the other nodes the correct thing
-	# also means needs to keep track of the parent node for this
-	# and maybe also the children for easier access stuff?

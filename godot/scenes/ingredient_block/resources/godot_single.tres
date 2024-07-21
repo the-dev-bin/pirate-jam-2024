@@ -4,5 +4,6 @@
 
 [resource]
 script = ExtResource("1_dmw50")
+ingredient_name = ""
 image = "res://icon.svg"
-structure = Array[Vector2]([])
+structure = Array[Vector2]([Vector2(0, 0)])

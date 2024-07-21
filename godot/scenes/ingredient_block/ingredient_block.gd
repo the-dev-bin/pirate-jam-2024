@@ -28,7 +28,6 @@ func setup(_block_data: Ingredient):
 		mouse_filter = MOUSE_FILTER_IGNORE
 
 func parse_structure(points: Array[Vector2]):
-	print(points)
 	for point in points:
 		if point[0] > max_width:
 			max_width = point[0]
