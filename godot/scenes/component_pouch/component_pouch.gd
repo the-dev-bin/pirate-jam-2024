@@ -8,9 +8,10 @@ signal toggle_tooltip(ingredient, position)
 @export var ingredient_block_scene: PackedScene
 
 var trash = []
-var deck = [load("res://scenes/ingredient_block/resources/godot_single.tres"),load("res://scenes/ingredient_block/resources/l_block.tres")]
+var deck = []
 
 func _ready() -> void:
+	deck = State.player_deck
 	deck.shuffle()
 	# have some hand size variable here, for now this works tho
 	pull_block()
@@ -27,6 +28,8 @@ func pull_block():
 		deck = trash
 		deck.shuffle()
 		trash = []
+	if deck.size() == 0:
+		return
 	var temp: IngredientBlock = ingredient_block_scene.instantiate()
 	var resource: Ingredient = deck.pop_front()
 	temp.setup(resource)
@@ -46,7 +49,7 @@ func move_block(node: IngredientBlock):
 	node.global_position = spawn_zone.get_global_rect().position
 	node.visible = true
 	create_tween().tween_property(node, 'global_position', saved_position, 0.5)
-	
+
 
 func _on_ingredient_removed(ingredient_block: IngredientBlock):
 	ingredient_block.queue_free()
