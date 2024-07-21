@@ -40,7 +40,6 @@ func parse_structure(points: Array[Vector2]):
 func _get_drag_data(_at_position:Vector2)->Variant:
 	if on_board:
 		return null
-	# eventually check if the math works out for actually clicking on the right thing. Might need to make it so dragging for the cauldron items is managed by the cauldron itself since there might be issues with overlapping
 
 	var preview = preview_scene.instantiate()
 	preview.setup(ingredient_resource)
