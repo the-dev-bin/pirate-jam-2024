@@ -8,6 +8,7 @@ var block_table
 var max_height = 0
 var max_width = 0
 
+signal removed_from_pouch(ingredient)
 
 var on_board = false
 

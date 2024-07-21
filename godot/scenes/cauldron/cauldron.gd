@@ -128,6 +128,6 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 		drag_data.source.available = true
 	elif drag_data.source:
 		pieces_on_board.push_back(drag_data.item)
-		drag_data.source.visible = false
+		drag_data.source.removed_from_pouch.emit()
 	drag_data.destination.add_child(temp)
 	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.structure, drag_data.item, drag_data.destination)
