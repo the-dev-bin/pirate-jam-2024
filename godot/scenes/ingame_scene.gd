@@ -27,9 +27,9 @@ func _input(event) -> void:
 func _save_game() -> void:
 	SaveGame.save_game(get_tree())
 
-func _on_toggle_tooltip(ingredient, position):
+func _on_toggle_tooltip(ingredient, tooltip_position):
 	if ingredient:
 		ingredient_tooltip.visible = true
-		ingredient_tooltip.global_position = position
+		ingredient_tooltip.global_position = tooltip_position
 	else:
 		ingredient_tooltip.visible = false

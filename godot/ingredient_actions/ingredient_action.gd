@@ -3,5 +3,5 @@ extends Resource
 
 enum TARGET {SINGLE, DOUBLE, AOE}
 
-func process_action(player: Node, enemies: Array[Node], targetted_enemy: int):
+func process_action(_player: Node, _enemies: Array[Node], _targeted_enemy: int):
 	pass
