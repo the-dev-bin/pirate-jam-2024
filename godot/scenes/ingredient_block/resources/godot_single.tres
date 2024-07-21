@@ -7,3 +7,7 @@ script = ExtResource("1_dmw50")
 ingredient_name = "Godot"
 image = "res://icon.svg"
 structure = Array[Vector2]([Vector2(0, 0)])
+base_structure = Array[Vector2]([Vector2(0, 0)])
+right_structure = Array[Vector2]([Vector2(0, 0)])
+flipped_structure = Array[Vector2]([Vector2(0, 0)])
+left_structure = Array[Vector2]([Vector2(0, 0)])

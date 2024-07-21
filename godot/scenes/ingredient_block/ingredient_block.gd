@@ -20,7 +20,7 @@ func setup(_block_data: Ingredient):
 	if !_block_data and !ingredient_resource:
 		return
 	ingredient_resource = _block_data
-	parse_structure(ingredient_resource.structure)
+	parse_structure(ingredient_resource.base_structure)
 	var size_vector = Vector2(max_width * block_size + block_size, max_height * block_size + block_size )
 	size = size_vector
 	$TextureRect.size = size_vector

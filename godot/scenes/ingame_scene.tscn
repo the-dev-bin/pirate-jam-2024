@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=10 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
+[ext_resource type="PackedScene" uid="uid://dv1wdpllun1d5" path="res://scenes/ingredient_block/block_preview.tscn" id="5_fbj6i"]
 [ext_resource type="PackedScene" uid="uid://bq4bpebcy5h4d" path="res://scenes/component_pouch/component_pouch.tscn" id="5_hsp0c"]
 [ext_resource type="PackedScene" uid="uid://5okf568cssch" path="res://scenes/ingredient_block/ingredient_block.tscn" id="6_hw03m"]
 [ext_resource type="PackedScene" uid="uid://dksentt5dji3p" path="res://scenes/tooltip/ingredient_tooltip.tscn" id="6_qyrxf"]
@@ -29,6 +30,7 @@ offset_left = 112.0
 offset_top = 139.0
 offset_right = 545.0
 offset_bottom = 340.0
+preview_scene = ExtResource("5_fbj6i")
 
 [node name="ComponentPouch" parent="." node_paths=PackedStringArray("spawn_zone") instance=ExtResource("5_hsp0c")]
 unique_name_in_owner = true
