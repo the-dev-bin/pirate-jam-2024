@@ -31,5 +31,6 @@ func _on_toggle_tooltip(ingredient, tooltip_position):
 	if ingredient:
 		ingredient_tooltip.visible = true
 		ingredient_tooltip.global_position = tooltip_position
+		ingredient_tooltip.setup(ingredient)
 	else:
 		ingredient_tooltip.visible = false

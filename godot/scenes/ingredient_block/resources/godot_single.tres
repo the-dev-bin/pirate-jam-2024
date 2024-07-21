@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_dmw50")
-ingredient_name = ""
+ingredient_name = "Godot"
 image = "res://icon.svg"
 structure = Array[Vector2]([Vector2(0, 0)])
