@@ -10,6 +10,8 @@ var board_state = {
 @export var board_width = 5
 @export var board_height = 5
 
+var pieces_on_board : Array[Ingredient] = []
+
 func _ready() -> void:
 	var slot_container_children = slot_container.get_children()
 	for i in slot_container_children.size():
@@ -38,9 +40,13 @@ func _get_drag_data(_at_position:Vector2)->Variant:
 		preview.setup(hovered_node.ingredient)
 		var drag_data = ItemDrag.new(hovered_node, hovered_node.ingredient, preview)
 		set_drag_preview(preview)
-		hovered_node.get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
+		if hovered_node.parent:
+			hovered_node.parent.get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
+		else:
+			hovered_node.get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
 		return drag_data
 	return null # make this the other way around
+	# need to make it so you can move block to a place that it currently resides in, need to toggle then add a check on drag end to check if successful and revert if not
 
 func get_cell(coords):
 	for node in slot_container.get_children() as Array[CauldronSlot]:
@@ -73,10 +79,19 @@ func _can_drop_data(_at_position:Vector2, data:Variant)->bool:
 
 	var hovered_node = get_cell(mouse)
 	if hovered_node:
+		# could probably do something here for styles to show better that it won't fit in the place
 		return is_block_placeable(hovered_node.board_position.x, hovered_node.board_position.y, drag_data.item)
 	else:
 		return false
 
+func toggle_availablity_block(board_position: Vector2, offsets: Array[Vector2], data=null, parent=null):
+	board_state[str(board_position.x)][str(board_position.y)].available = !board_state[str(board_position.x)][str(board_position.y)].available
+	for offset in offsets:
+		var offset_node = board_state[str(board_position.x + offset.x)][str(board_position.y + offset.y)]
+		if offset_node is CauldronSlot:
+			offset_node.parent = parent
+			offset_node.ingredient = data
+			offset_node.available = !offset_node.available
 
 func _drop_data(_at_position:Vector2, data:Variant)->void:
 	if !data is ItemDrag: return
@@ -92,12 +107,19 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 	drag_data.destination.ingredient = drag_data.item
 	if drag_data.source is CauldronSlot:
 		drag_data.source.ingredient = null
-		drag_data.source.available = true
-		drag_data.source.remove_child(drag_data.source.get_child(0))
+		if drag_data.source.parent:
+			drag_data.source.parent.remove_child(drag_data.source.parent.get_child(0))
+		else:
+			drag_data.source.remove_child(drag_data.source.get_child(0))
+		toggle_availablity_block(drag_data.source.board_position, drag_data.item.structure)
+
 		drag_data.source.available = true
 	elif drag_data.source:
+		pieces_on_board.push_back(drag_data.item)
 		drag_data.source.visible = false
 	drag_data.destination.add_child(temp)
+	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.structure, drag_data.item, drag_data.destination)
+
 	# if block is bigger than one block need to go through and make the other nodes the correct thing
 	# also means needs to keep track of the parent node for this
 	# and maybe also the children for easier access stuff?

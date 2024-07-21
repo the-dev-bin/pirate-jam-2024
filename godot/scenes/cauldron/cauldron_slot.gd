@@ -5,6 +5,7 @@ extends PanelContainer
 
 signal block_dropped
 
-var board_position : Vector2
+var board_position: Vector2
 var available = true
 var ingredient: Ingredient
+var parent: CauldronSlot
