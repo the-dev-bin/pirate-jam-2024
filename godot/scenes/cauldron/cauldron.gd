@@ -2,7 +2,7 @@ extends PanelContainer
 
 @onready var slot_container = %SlotContainer
 @export var preview_scene: PackedScene
-
+@export var block_scene: PackedScene
 signal toggle_tooltip(ingredient, position)
 
 # fill out when blocks are placed
@@ -33,6 +33,8 @@ func _ready() -> void:
 func _input(event):
 	if event is InputEventMouseMotion:
 		var cell = get_cell(get_global_mouse_position())
+		if get_viewport().gui_is_dragging():
+			return
 		if cell and cell is CauldronSlot and cell.ingredient:
 			hovering = true
 			toggle_tooltip.emit(cell.ingredient, cell.global_position + Vector2(30,30))
@@ -115,7 +117,7 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 
 	drag_data.destination = get_cell(mouse)
 
-	var temp = preview_scene.instantiate()
+	var temp = block_scene.instantiate()
 	temp.on_board = true
 	temp.setup(data.item)
 	drag_data.destination.available = false
@@ -136,6 +138,6 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 		drag_data.source.removed_from_pouch.emit()
 	drag_data.destination.add_child(temp)
 	drag_data.destination.block_rotation = drag_data.block_rotation
-	# drag_data.destination.rotation_degrees = drag_data.block_rotation
+	# temp.rotation_degrees = drag_data.block_rotation
 	print(drag_data.block_rotation)
 	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.get_structure(drag_data.block_rotation), drag_data.item, drag_data.destination)

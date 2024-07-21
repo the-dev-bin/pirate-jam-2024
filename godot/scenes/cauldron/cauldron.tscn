@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://sh2tec1kvvnv"]
+[gd_scene load_steps=5 format=3 uid="uid://sh2tec1kvvnv"]
 
 [ext_resource type="Script" path="res://scenes/cauldron/cauldron.gd" id="1_rnlaf"]
 [ext_resource type="PackedScene" uid="uid://5okf568cssch" path="res://scenes/ingredient_block/ingredient_block.tscn" id="2_3xr65"]
 [ext_resource type="PackedScene" uid="uid://cylhp2h2lws0x" path="res://scenes/cauldron/cauldron_slot.tscn" id="2_h1aey"]
+[ext_resource type="PackedScene" uid="uid://dv1wdpllun1d5" path="res://scenes/ingredient_block/block_preview.tscn" id="2_q5g83"]
 
 [node name="Cauldron" type="PanelContainer"]
 anchors_preset = 15
@@ -13,7 +14,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_rnlaf")
-preview_scene = ExtResource("2_3xr65")
+preview_scene = ExtResource("2_q5g83")
+block_scene = ExtResource("2_3xr65")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 2
