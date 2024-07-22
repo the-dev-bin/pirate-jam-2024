@@ -5,7 +5,7 @@ extends PanelContainer
 
 
 var board_position: Vector2
-var available = true :
+var available: bool = true :
 	set(value):
 		available = value
 		if available:

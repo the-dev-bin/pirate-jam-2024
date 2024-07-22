@@ -5,5 +5,5 @@ extends IngredientAction
 
 
 
-func process_action(_player: Node, _enemies: Array[Node], _targeted_enemy: int):
+func process_action(_player: Node, _enemies: Array[Node], _targeted_enemy: int) -> void:
 	print('add ' + str(attack_range[0]) + ' defense')

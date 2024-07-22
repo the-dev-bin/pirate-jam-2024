@@ -1,11 +1,11 @@
 ## Script that manages saving games.
 class_name SaveGame extends Node
 
-const ENABLED = true
-const ENCRYPTION_KEY = "godotrules"
-const SAVE_GAME_TEMPLATE = "savegame.save"
-const SAVE_GROUP_NAME = "Persist"
-const NODE_DATA = "node_data"
+const ENABLED: bool = true
+const ENCRYPTION_KEY: String = "godotrules"
+const SAVE_GAME_TEMPLATE: String = "savegame.save"
+const SAVE_GROUP_NAME: String = "Persist"
+const NODE_DATA: String = "node_data"
 
 static func delete_save() -> void:
 	
@@ -17,25 +17,25 @@ static func delete_save() -> void:
 static func has_save() -> bool:
 	return FileAccess.file_exists("user://" + SAVE_GAME_TEMPLATE)
 
-static func save_game(tree:SceneTree):
+static func save_game(tree:SceneTree) -> void:
 	
 	if not ENABLED:
 		return
 	
 	print("Saving game to user://" + SAVE_GAME_TEMPLATE)
 	
-	var save_file = null
+	var save_file: Variant = null
 	
 	if OS.is_debug_build():
 		save_file = FileAccess.open("user://" + SAVE_GAME_TEMPLATE, FileAccess.WRITE)
 	else:
 		save_file = FileAccess.open_encrypted_with_pass("user://" + SAVE_GAME_TEMPLATE, FileAccess.WRITE, ENCRYPTION_KEY)
 		
-	var save_nodes = tree.get_nodes_in_group(SAVE_GROUP_NAME)
+	var save_nodes : Array[Node] = tree.get_nodes_in_group(SAVE_GROUP_NAME)
 	
 	for node in save_nodes:
 		
-		var save_data = {}
+		var save_data: Dictionary = {}
 		
 		# Check the node is an instanced scene so it can be instanced again during load.
 		if not node.scene_file_path.is_empty():
@@ -92,16 +92,16 @@ static func load_game(tree:SceneTree) -> void:
 	
 	print("Load game from user://" + SAVE_GAME_TEMPLATE)
 		
-	var save_nodes = tree.get_nodes_in_group(SAVE_GROUP_NAME)
+	var save_nodes: Array[Node] = tree.get_nodes_in_group(SAVE_GROUP_NAME)
 	
-	var nodes_by_path = {}
+	var nodes_by_path: Dictionary = {}
 	for node in save_nodes:
 		if not node.get_path().is_empty():
 			nodes_by_path[node.get_path()] = node
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_file = null
+	var save_file: Variant = null
 	
 	if OS.is_debug_build():
 		save_file = FileAccess.open("user://" + SAVE_GAME_TEMPLATE, FileAccess.READ)

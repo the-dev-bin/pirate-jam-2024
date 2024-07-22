@@ -9,23 +9,23 @@ signal on_complete_fade_out
 @export var auto_fade_in: bool = true 
 @export var minimum_opacity: float = 1.0
 
-func _ready():
+func _ready() -> void:
 	modulate.a = minimum_opacity
 	if auto_fade_in:
 		fade_in()
 
-func fade_in():
+func fade_in() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate", Color(modulate, 0.0), fade_in_duration)\
 	.finished.connect(_on_complete_fade_in)
 
-func fade_out():
+func fade_out() -> void:
 	var tween = create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate", Color(modulate, minimum_opacity), fade_out_duration)\
 	.finished.connect(_on_complete_fade_out)
 
-func _on_complete_fade_out():
+func _on_complete_fade_out() -> void:
 	emit_signal("on_complete_fade_out")
 	
-func _on_complete_fade_in():
+func _on_complete_fade_in() -> void:
 	emit_signal("on_complete_fade_in")

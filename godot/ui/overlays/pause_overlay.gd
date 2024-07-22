@@ -1,3 +1,4 @@
+class_name PauseOverlay
 extends CenterContainer
 
 signal game_exited

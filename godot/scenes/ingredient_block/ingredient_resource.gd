@@ -19,7 +19,7 @@ var rarity: RARITY
 
 
 
-func get_structure(direction):
+func get_structure(direction: float) -> Array[Vector2]:
 	if direction == 0.0:
 		return base_structure
 	elif direction == 90.0:
@@ -28,3 +28,5 @@ func get_structure(direction):
 		return flipped_structure
 	elif direction == 270.0:
 		return right_structure
+	printerr('Direction not found')
+	return []

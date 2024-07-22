@@ -9,7 +9,7 @@ var item: Ingredient
 var preview: Control
 var block_rotation: float
 
-func _init(_source: Control, _item: Ingredient, _preview: Control):
+func _init(_source: Control, _item: Ingredient, _preview: Control) -> void:
     self.source = _source
     self.item = _item
     self.preview = _preview
