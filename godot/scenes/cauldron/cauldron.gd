@@ -48,6 +48,7 @@ func _get_drag_data(_at_position:Vector2)->Variant:
 	var mouse = get_global_mouse_position()
 	var hovered_node = get_cell(mouse)
 	if hovered_node and hovered_node is CauldronSlot and hovered_node.ingredient:
+		toggle_tooltip.emit(null,null)
 		var preview = preview_scene.instantiate()
 		var ingredient_copy = hovered_node.ingredient.duplicate()
 		# ingredient_copy.block_rotation = 0.0
@@ -111,8 +112,6 @@ func toggle_availablity_block(board_position: Vector2, offsets: Array[Vector2], 
 func _drop_data(_at_position:Vector2, data:Variant)->void:
 	if !data is ItemDrag: return
 	var drag_data := data as ItemDrag
-	print(drag_data)
-	print(drag_data.block_rotation)
 	var mouse = get_global_mouse_position()
 
 	drag_data.destination = get_cell(mouse)
@@ -139,5 +138,4 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 	drag_data.destination.add_child(temp)
 	drag_data.destination.block_rotation = drag_data.block_rotation
 	# temp.rotation_degrees = drag_data.block_rotation
-	print(drag_data.block_rotation)
 	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.get_structure(drag_data.block_rotation), drag_data.item, drag_data.destination)

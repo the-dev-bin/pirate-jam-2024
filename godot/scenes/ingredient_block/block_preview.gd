@@ -4,7 +4,6 @@ var rotations = [0, 270, 180, 90]
 var current_rotation = 0
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("rotate_left"):
-		print('trying to rotate')
 		update_drag_data(-1)
 	elif Input.is_action_just_pressed("rotate_right"):
 		update_drag_data(1)
