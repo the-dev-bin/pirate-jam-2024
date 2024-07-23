@@ -140,3 +140,23 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 	drag_data.destination.block_rotation = drag_data.block_rotation
 	# temp.rotation_degrees = drag_data.block_rotation
 	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.get_structure(drag_data.block_rotation), drag_data.item, drag_data.destination)
+
+
+func get_ingredients() -> Array[Ingredient]:
+	return pieces_on_board
+
+
+func clear_board() -> void:
+	pieces_on_board = []
+	var slot_container_children : Array[Node] = slot_container.get_children()
+	for i in slot_container_children.size():
+		var slot: Node = slot_container_children[i]
+		if slot is CauldronSlot:
+			var cauldron_node: CauldronSlot = slot as CauldronSlot
+			if cauldron_node.ingredient:
+				cauldron_node.ingredient = null
+				cauldron_node.available = true
+				cauldron_node.parent = null
+			if cauldron_node.get_child_count() > 0:
+				# could do some tween thing here to move them into cauldron and scale down
+				cauldron_node.get_child(0).queue_free()

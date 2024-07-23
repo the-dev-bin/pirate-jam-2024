@@ -29,10 +29,20 @@ func _on_toggle_tooltip(ingredient: Ingredient, tooltip_position: Variant) -> vo
 
 func _on_end_turn_button_pressed():
 	print('ending players turn')
-	# again, should eventually take into account all enemies
 	var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
 	var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
+	for ingredient in cauldron.get_ingredients():
+		if ingredient.action:
+			ingredient.action.process_action(player_node, [enemy], 0)
+
+	cauldron.clear_board()
+
+
+
+
+	# again, should eventually take into account all enemies
 	var action_entry: EnemyActionEntry = enemy.get_action()
 	var action: EnemyAction = action_entry.scene.instantiate()
 	add_child(action)
 	action.process_action(player_node, [enemy], action_entry.params, enemy)
+	enemy.update_intent()

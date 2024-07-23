@@ -1,3 +1,4 @@
+class_name DefendAction
 extends IngredientAction
 
 @export var defense_value:int = 2
