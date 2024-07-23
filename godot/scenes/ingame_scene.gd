@@ -27,7 +27,7 @@ func _input(event: InputEvent) -> void:
 func _save_game() -> void:
 	SaveGame.save_game(get_tree())
 
-func _on_toggle_tooltip(ingredient: Ingredient, tooltip_position: Vector2) -> void:
+func _on_toggle_tooltip(ingredient: Ingredient, tooltip_position: Variant) -> void:
 	if ingredient:
 		ingredient_tooltip.visible = true
 		ingredient_tooltip.global_position = tooltip_position

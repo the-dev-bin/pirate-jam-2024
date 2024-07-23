@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu8jbr1tfuict"]
+[gd_scene load_steps=3 format=3 uid="uid://bu8jbr1tfuict"]
 
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_q1r4t"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy_node.gd" id="1_q3eh5"]
 
 [node name="Enemy" type="Node2D"]
+script = ExtResource("1_q3eh5")
 
-[node name="Icon" type="Sprite2D" parent="."]
+[node name="EnemySprite" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 modulate = Color(0.305799, 0.563055, 0.608372, 1)
-position = Vector2(2.5, 1)
-scale = Vector2(0.570313, 1)
+texture = ExtResource("1_q1r4t")
+
+[node name="IntentIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1, -142)
 texture = ExtResource("1_q1r4t")

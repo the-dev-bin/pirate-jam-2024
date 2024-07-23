@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b08icw3rhyjdm"]
+[gd_scene load_steps=6 format=3 uid="uid://b08icw3rhyjdm"]
 
 [ext_resource type="Script" path="res://scenes/combat_arena/combat_arena.gd" id="1_3j36f"]
 [ext_resource type="PackedScene" uid="uid://sh2tec1kvvnv" path="res://scenes/cauldron/cauldron.tscn" id="1_ne5b2"]
 [ext_resource type="PackedScene" uid="uid://bq4bpebcy5h4d" path="res://scenes/component_pouch/component_pouch.tscn" id="2_6n2cw"]
 [ext_resource type="PackedScene" uid="uid://dksentt5dji3p" path="res://scenes/tooltip/ingredient_tooltip.tscn" id="3_4gmlw"]
+[ext_resource type="PackedScene" uid="uid://d0myqt3wxsrtt" path="res://scenes/enemy/enemy_spawn_point.tscn" id="5_gk7dw"]
 
 [node name="CombatArena" type="Node2D"]
 script = ExtResource("1_3j36f")
@@ -31,3 +32,12 @@ offset_top = 225.0
 offset_right = 446.0
 offset_bottom = 256.0
 text = "End Turn"
+
+[node name="EnemySpawnPoint" parent="." instance=ExtResource("5_gk7dw")]
+position = Vector2(562, 336)
+
+[node name="EnemySpawnPoint2" parent="." instance=ExtResource("5_gk7dw")]
+position = Vector2(699, 409)
+
+[node name="EnemySpawnPoint3" parent="." instance=ExtResource("5_gk7dw")]
+position = Vector2(858, 366)

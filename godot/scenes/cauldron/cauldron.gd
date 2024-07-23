@@ -4,7 +4,7 @@ extends PanelContainer
 @onready var slot_container: GridContainer = %SlotContainer
 @export var preview_scene: PackedScene
 @export var block_scene: PackedScene
-signal toggle_tooltip(ingredient: Ingredient, position: Vector2)
+signal toggle_tooltip(ingredient: Ingredient, position: Variant)
 
 # fill out when blocks are placed
 var board_state : Dictionary = {

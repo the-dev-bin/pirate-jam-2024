@@ -3,7 +3,7 @@ extends PanelContainer
 
 @onready var ingredient_container: BoxContainer = %IngredientContainer
 
-signal toggle_tooltip(ingredient: Ingredient, position: Vector2)
+signal toggle_tooltip(ingredient: Ingredient, position: Variant)
 
 @export var spawn_zone: Control # this will just be for coords to spawn and then tween to their actual position on the board
 @export var ingredient_block_scene: PackedScene
