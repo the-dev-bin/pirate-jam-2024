@@ -1,3 +1,4 @@
+class_name AttackAction
 extends IngredientAction
 
 @export var attack_range: Array[int] = [1,2]

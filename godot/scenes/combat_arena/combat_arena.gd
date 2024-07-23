@@ -5,7 +5,7 @@ extends Node2D
 @onready var ingredient_pouch: ComponentPouch = %ComponentPouch
 @onready var ingredient_tooltip: IngredientTooltip = %IngredientTooltip
 @onready var end_turn_button: Button = %EndTurnButton
-
+@onready var player_node: Player = %Player
 func _ready() -> void:
 	cauldron.toggle_tooltip.connect(_on_toggle_tooltip)
 	ingredient_pouch.toggle_tooltip.connect(_on_toggle_tooltip)
@@ -29,3 +29,10 @@ func _on_toggle_tooltip(ingredient: Ingredient, tooltip_position: Variant) -> vo
 
 func _on_end_turn_button_pressed():
 	print('ending players turn')
+	# again, should eventually take into account all enemies
+	var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
+	var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
+	var action_entry: EnemyActionEntry = enemy.get_action()
+	var action: EnemyAction = action_entry.scene.instantiate()
+	add_child(action)
+	action.process_action(player_node, [enemy], action_entry.params, enemy)

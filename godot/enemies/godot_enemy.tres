@@ -12,7 +12,7 @@ id = ""
 followup = ""
 scene = ExtResource("2_tudl2")
 params = {
-"attack": 10
+"damage": 5
 }
 intent = 0
 

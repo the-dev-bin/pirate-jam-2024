@@ -8,3 +8,4 @@ func process_action(player: Node, _enemies: Array[Node], params: Dictionary, _ba
 			player.damage(params['damage'])
 		else:
 			printerr('params missing damage value')
+	queue_free()

@@ -17,6 +17,7 @@ func setup(_enemy: Enemy) -> void:
 	enemy_sprite.texture = ResourceLoader.load(enemy.sprite)
 
 func get_action() -> EnemyActionEntry:
+	print(planned_action)
 	var current_action: EnemyActionEntry = planned_action.duplicate()
 	previous_action = current_action
 	planned_action = null

@@ -6,7 +6,7 @@ enum RARITY {COMMON, UNCOMMON, RARE, EPIC}
 @export var ingredient_name: String
 @export_file('*.svg') var image
 # Define all places that should filled in by the position
-@export var action: IngredientAction
+@export var action: IngredientAction # should probably use packed scenes like the other method
 
 @export_category('Rotations')
 @export var base_structure: Array[Vector2] = [Vector2(0,0)]
