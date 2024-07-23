@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Enemy" load_steps=7 format=3 uid="uid://s4mog50ms2x1"]
+
+[ext_resource type="Script" path="res://scenes/enemy/EnemyResource.gd" id="1_0o1tj"]
+[ext_resource type="Script" path="res://scenes/enemy/EnemyActionEntry.gd" id="1_aahbp"]
+[ext_resource type="PackedScene" uid="uid://bpjytsy4xgl5g" path="res://enemies/enemy_actions/attack_action.tscn" id="2_tudl2"]
+[ext_resource type="Script" path="res://scenes/Stats.gd" id="3_edr8k"]
+
+[sub_resource type="Resource" id="Resource_fro0g"]
+script = ExtResource("1_aahbp")
+likelihood = 10
+id = ""
+followup = ""
+scene = ExtResource("2_tudl2")
+params = {
+"attack": 10
+}
+
+[sub_resource type="Resource" id="Resource_uq4uh"]
+script = ExtResource("3_edr8k")
+max_health = 10
+defense = 0
+
+[resource]
+script = ExtResource("1_0o1tj")
+name = "Godot Test Enemy"
+sprite = "res://icon.svg"
+actions = Array[ExtResource("1_aahbp")]([SubResource("Resource_fro0g")])
+stats = SubResource("Resource_uq4uh")
