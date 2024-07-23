@@ -11,6 +11,9 @@ func _ready() -> void:
 func get_enemy() -> Enemy:
 	return enemy
 
+func get_enemy_node() -> EnemyNode:
+	return enemy_node
+
 func set_enemy(_enemy: Enemy) -> void:
 	enemy = enemy
 

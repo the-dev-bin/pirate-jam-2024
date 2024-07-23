@@ -14,6 +14,7 @@ scene = ExtResource("2_tudl2")
 params = {
 "attack": 10
 }
+intent = 0
 
 [sub_resource type="Resource" id="Resource_uq4uh"]
 script = ExtResource("3_edr8k")
