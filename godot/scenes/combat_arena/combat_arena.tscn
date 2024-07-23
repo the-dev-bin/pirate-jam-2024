@@ -27,6 +27,7 @@ offset_bottom = 406.0
 unique_name_in_owner = true
 
 [node name="EndTurnButton" type="Button" parent="."]
+unique_name_in_owner = true
 offset_left = 368.0
 offset_top = 225.0
 offset_right = 446.0
@@ -34,10 +35,10 @@ offset_bottom = 256.0
 text = "End Turn"
 
 [node name="EnemySpawnPoint" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(562, 336)
+position = Vector2(529, 340)
 
 [node name="EnemySpawnPoint2" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(699, 409)
+position = Vector2(689, 420)
 
 [node name="EnemySpawnPoint3" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(858, 366)
+position = Vector2(844, 346)

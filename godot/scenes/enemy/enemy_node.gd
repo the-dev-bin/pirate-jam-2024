@@ -17,12 +17,13 @@ func setup(_enemy: Enemy) -> void:
 	enemy_sprite.texture = ResourceLoader.load(enemy.sprite)
 
 func get_action() -> EnemyActionEntry:
-	var current_action = planned_action.duplicate()
+	var current_action: EnemyActionEntry = planned_action.duplicate()
 	previous_action = current_action
 	planned_action = null
 	return current_action
 
 func update_intent() -> void:
+	intent_icon.visible = true
 	if previous_action and previous_action.followup:
 			var found_action: EnemyActionEntry = enemy.actions.pick_random()
 			planned_action = found_action
