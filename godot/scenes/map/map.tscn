@@ -1,0 +1,93 @@
+[gd_scene load_steps=10 format=3 uid="uid://yefrl1id42su"]
+
+[ext_resource type="Script" path="res://scenes/map/map.gd" id="1_gg7d2"]
+[ext_resource type="PackedScene" uid="uid://b08icw3rhyjdm" path="res://scenes/combat_arena/combat_arena.tscn" id="2_05utw"]
+[ext_resource type="Script" path="res://scenes/map/nodes/combat_node.gd" id="3_fkmp2"]
+[ext_resource type="Script" path="res://scenes/map/nodes/EnemySpawnEntry.gd" id="4_c08fx"]
+[ext_resource type="Script" path="res://scenes/enemy/EnemyResource.gd" id="5_hpy1o"]
+[ext_resource type="Resource" uid="uid://s4mog50ms2x1" path="res://enemies/godot_enemy.tres" id="6_p8sur"]
+[ext_resource type="Script" path="res://scenes/map/nodes/EnemySpawnZone.gd" id="6_w0ayg"]
+
+[sub_resource type="Resource" id="Resource_je35m"]
+script = ExtResource("4_c08fx")
+enemies = Array[ExtResource("5_hpy1o")]([ExtResource("6_p8sur")])
+likelihood = 0.0
+
+[sub_resource type="Resource" id="Resource_og658"]
+script = ExtResource("6_w0ayg")
+encounters = Array[ExtResource("4_c08fx")]([SubResource("Resource_je35m")])
+
+[node name="Map" type="Control"]
+custom_minimum_size = Vector2(960, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_gg7d2")
+combat_area = ExtResource("2_05utw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 1519.0
+offset_bottom = 658.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.330086, 0.496596, 0.251939, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+vertical_scroll_mode = 2
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 2
+offset_right = 594.0
+offset_bottom = 439.0
+theme_override_font_sizes/font_size = 131
+text = "test"
+
+[node name="Label2" type="Label" parent="ScrollContainer/Control"]
+layout_mode = 2
+offset_left = 7.0
+offset_top = -1189.0
+offset_right = 601.0
+offset_bottom = -750.0
+theme_override_font_sizes/font_size = 321
+text = "test2"
+
+[node name="EnemyEncounterButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 196.0
+offset_top = 232.0
+offset_right = 807.0
+offset_bottom = 337.0
+theme_override_font_sizes/font_size = 36
+text = "Enemy Encounter"
+script = ExtResource("3_fkmp2")
+spawn_zone = SubResource("Resource_og658")
+
+[node name="ItemEncounterButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 250.0
+offset_top = 389.0
+offset_right = 788.0
+offset_bottom = 494.0
+theme_override_font_sizes/font_size = 71
+text = "Item Encounter"
