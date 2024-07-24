@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0myqt3wxsrtt"]
+
+[ext_resource type="Script" path="res://scenes/enemy/enemy_spawn_point.gd" id="1_dp7ag"]
+[ext_resource type="PackedScene" uid="uid://bu8jbr1tfuict" path="res://scenes/enemy/enemy.tscn" id="2_qyyn8"]
+
+[node name="EnemySpawnPoint" type="Node2D"]
+script = ExtResource("1_dp7ag")
+enemy_scene = ExtResource("2_qyyn8")
+
+[node name="Enemy" parent="." instance=ExtResource("2_qyyn8")]

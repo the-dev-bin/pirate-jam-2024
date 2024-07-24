@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpjytsy4xgl5g"]
+
+[ext_resource type="Script" path="res://enemies/enemy_actions/attack_action.gd" id="1_ulgol"]
+
+[node name="AttackAction" type="Node2D"]
+script = ExtResource("1_ulgol")
