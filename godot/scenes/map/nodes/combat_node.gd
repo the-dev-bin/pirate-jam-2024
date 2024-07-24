@@ -8,6 +8,6 @@ extends Button
 
 func get_params() -> Dictionary:
 	return {
-		"enemies": spawn_zone.get_encounter(),
+		"enemies": spawn_zone.get_encounter().enemies,
 		"loot_table": loot_table
 	}
