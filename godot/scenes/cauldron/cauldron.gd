@@ -95,7 +95,7 @@ func _can_drop_data(_at_position:Vector2, data:Variant) -> bool:
 	var mouse: Vector2 = get_global_mouse_position()
 
 	var hovered_node: CauldronSlot = get_cell(mouse)
-	if hovered_node:
+	if hovered_node is CauldronSlot:
 		# could probably do something here for styles to show better that it won't fit in the place
 		return is_block_placeable(hovered_node.board_position.x, hovered_node.board_position.y, drag_data.item.get_structure(drag_data.block_rotation))
 	else:
