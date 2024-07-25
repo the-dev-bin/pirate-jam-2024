@@ -42,7 +42,7 @@ func _on_end_turn_button_pressed():
 	for ingredient in cauldron.get_ingredients():
 		if ingredient.action:
 			ingredient.action.process_action(player_node, [enemy], 0)
-
+	ingredient_pouch.add_blocks_to_trash(cauldron.get_ingredients())
 	cauldron.clear_board()
 
 
@@ -54,3 +54,6 @@ func _on_end_turn_button_pressed():
 	add_child(action)
 	action.process_action(player_node, [enemy], action_entry.params, enemy)
 	enemy.update_intent()
+	ingredient_pouch.clear_hand()
+	ingredient_pouch.draw_hand()
+
