@@ -1,6 +1,6 @@
-extends Button
+extends Control
 
-const margin = 10
+const margin = 16
 
 var children: Array = []
 
