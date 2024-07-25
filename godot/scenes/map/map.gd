@@ -18,8 +18,13 @@ enum LOOT_PROGRESSION {START, START_MID, MID, MID_END, END}
 
 var map_nodes = {}
 @onready var map_node_container: Control = %MapNodeContainer
-# Called when the node enters the scene tree for the first time.
+@onready var fade_overlay: FadeOverlay = %FadeOverlay
+
+
+var queued_scene: PackedScene
+
 func _ready() -> void:
+	fade_overlay.on_complete_fade_out.connect(_on_fade_out_complete)
 	if State.map_data:
 		pass
 	else:
@@ -62,15 +67,21 @@ func _on_map_node_pressed(index: int) -> void:
 	print('Pressed ' + str(index))
 
 	State.current_map_node = index
-	load_map(State.map_data)
 	if State.map_data.node_types[index] == MapNode.NODE_TYPE.COMBAT:
 		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
 		print(encounter.enemies[0].name)
-		# State.map_node_parameters = {
-		# 	"enemies": encounter.enemies,
-		# 	"loot": null
-		# }
-		# get_tree().change_scene_to_packed(combat_area)
+		queued_scene = combat_area
+		State.map_node_parameters = {
+			"enemies": encounter.enemies,
+			"loot": null
+		}
+		fade_overlay.visible = true
+		fade_overlay.fade_out()
+
+
+func _on_fade_out_complete() -> void:
+	if queued_scene:
+		get_tree().change_scene_to_packed(queued_scene)
 
 
 # func _on_enemy_button_pressed() -> void:
