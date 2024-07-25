@@ -19,11 +19,17 @@ func _ready():
 	tween.tween_property(instance, "modulate:a", 1.0, fade_duration)\
 	.from(0.0)\
 	.finished.connect(_fade_out)
-	
+
 func _process(_delta):
 	if interuptable and Input.is_action_just_pressed("exit"):
 		_change_scene()
-	
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.keycode == KEY_SPACE or event.keycode == KEY_ENTER:
+			_change_scene()
+	if event is InputEventMouseButton:
+		if event.button_index == 1:
+			_change_scene()
 func _fade_out():
 	var tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)

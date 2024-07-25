@@ -10,6 +10,7 @@ signal on_complete_fade_out
 @export var minimum_opacity: float = 1.0
 
 func _ready() -> void:
+	visible = true
 	modulate.a = minimum_opacity
 	if auto_fade_in:
 		fade_in()

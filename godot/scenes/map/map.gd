@@ -24,6 +24,7 @@ var map_nodes = {}
 var queued_scene: PackedScene
 
 func _ready() -> void:
+	State.map_node_parameters = {}
 	fade_overlay.on_complete_fade_out.connect(_on_fade_out_complete)
 	if State.map_data:
 		pass
@@ -84,7 +85,6 @@ func _on_fade_out_complete() -> void:
 		get_tree().change_scene_to_packed(queued_scene)
 
 
-# func _on_enemy_button_pressed() -> void:
 
 
 # this is from https://github.com/VladoCC/Map-Generator-Godot-Tutorial
