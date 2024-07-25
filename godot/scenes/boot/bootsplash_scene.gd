@@ -11,6 +11,7 @@ extends Control
 @onready var instance:Node2D = node.instantiate()
 
 func _ready():
+	RenderingServer.set_default_clear_color(Color.BLACK) # since we don't have an actual transition system this hack works for making it not flash between scenes
 	instance.modulate.a = 0.0
 	control.add_child(instance)
 	var tween = create_tween()
