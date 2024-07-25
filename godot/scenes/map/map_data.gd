@@ -3,6 +3,7 @@ extends Resource
 
 var paths = []
 var nodes = {}
+var node_types = {}
 
 func set_paths(paths, points):
 	self.paths = paths

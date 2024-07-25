@@ -5,6 +5,11 @@ extends Control
 @export var total_nodes:int = 12
 @export_subgroup("Spawn pools")
 @export var enemy_spawn_zones: Array[EnemySpawnZone] = []
+@export var enemy_loot_pools: Array[EnemySpawnZone] = []
+@export var elite_loot_pools: Array[EnemySpawnZone] = []
+@export var treasure_loot_pools: Array[EnemySpawnZone] = []
+@export var mystery_event_pools: Array[EnemySpawnZone] = []
+enum LOOT_PROGRESSION {START, START_MID, MID, MID_END, END}
 @export_subgroup("Packed Scenes")
 @export var combat_area: PackedScene
 @export var treasure_room: PackedScene
@@ -29,9 +34,10 @@ func load_map(map_data: MapData) -> void:
 
 	for k in map_data.nodes.keys():
 		var point = map_data.nodes[k]
-		var event = map_node.instantiate()
+		var event: MapNode = map_node.instantiate()
 		event.position = point * map_scale + Vector2(200, 0)
 		map_node_container.add_child(event)
+		event.set_type(map_data.node_types[k])
 		map_nodes[k] = event
 
 	for path in map_data.paths:
@@ -40,7 +46,7 @@ func load_map(map_data: MapData) -> void:
 			var index2 = path[i + 1]
 			map_nodes[index1].add_child_event(map_nodes[index2])
 	var current_node: MapNode = map_nodes[State.current_map_node]
-	current_node.set_type(MapNode.MAP_ICON.CURRENT)
+	current_node.set_type(MapNode.NODE_TYPE.CURRENT)
 	current_node.enable() # just to get the styling right
 	if current_node.children:
 		for child in current_node.children:
@@ -54,16 +60,20 @@ func load_map(map_data: MapData) -> void:
 
 func _on_map_node_pressed(index: int) -> void:
 	print('Pressed ' + str(index))
+
 	State.current_map_node = index
 	load_map(State.map_data)
+	if State.map_data.node_types[index] == MapNode.NODE_TYPE.COMBAT:
+		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
+		print(encounter.enemies[0].name)
+		# State.map_node_parameters = {
+		# 	"enemies": encounter.enemies,
+		# 	"loot": null
+		# }
+		# get_tree().change_scene_to_packed(combat_area)
 
 
-func _on_enemy_button_pressed() -> void:
-	var enemy_encounter_button: CombatNode = %EnemyEncounterButton
-	var encounter: EnemySpawnEntry = enemy_encounter_button.spawn_zone.get_encounter()
-	print(encounter.enemies[0].name)
-	State.map_node_parameters = enemy_encounter_button.get_params()
-	get_tree().change_scene_to_packed(combat_area)
+# func _on_enemy_button_pressed() -> void:
 
 
 # this is from https://github.com/VladoCC/Map-Generator-Godot-Tutorial
@@ -132,5 +142,27 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 
 	var data: MapData = MapData.new()
 	data.set_paths(paths, points)
-	return data
+	data.node_types = {}
 
+	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
+	var weights: Array = [
+		10.0, # COMBAT
+		2.0, # ELITE
+		5.0, # MYSTERY
+		2.5 # SHOP
+		]
+
+	
+	var total_combat: int = 0
+	while total_combat < total_nodes / 2:
+		total_combat = 0
+		for node in data.nodes.keys():
+			# basically random for now, eventually do stuff with checking connected nodes
+			var genned_type: int = rng.rand_weighted(weights)
+			if genned_type == MapNode.NODE_TYPE.COMBAT:
+				total_combat += 1
+			data.node_types[node] = genned_type
+		data.node_types[0] = MapNode.NODE_TYPE.START
+		data.node_types[1] = MapNode.NODE_TYPE.BOSS
+	# also need to figure out resting spots
+	return data

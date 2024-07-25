@@ -8,7 +8,7 @@ const margin = 16
 var children: Array = []
 
 @export_file("*.svg") var icons: Array[String] = []
-enum MAP_ICON {COMBAT, ELITE, MYSTERY, SHOP, BOSS, CAMPFIRE, CURRENT}
+enum NODE_TYPE {COMBAT, ELITE, MYSTERY, SHOP, BOSS, CAMPFIRE, CURRENT, START}
 
 @export var button: Button
 
@@ -17,7 +17,7 @@ func add_child_event(child) -> void:
 		children.append(child)
 		queue_redraw()
 
-func set_type(icon: MAP_ICON) -> void:
+func set_type(icon: NODE_TYPE) -> void:
 	button.icon = ResourceLoader.load(icons[icon])
 
 func enable() -> void:
