@@ -6,7 +6,8 @@ extends Control
 
 @export var map_node: PackedScene
 @export var map_scale = 1.0
-
+@export var distance_apart: float = 1.0
+@export var total_nodes = 12
 var map_nodes = {}
 
 @onready var map_node_container: Control = %MapNodeContainer
@@ -16,7 +17,7 @@ func _ready() -> void:
 		pass
 		# already exists
 	else:
-		var data: MapData = generate(30,20,12)
+		var data: MapData = generate(30,total_nodes,12)
 		State.map_data = data
 	load_map(State.map_data)
 
@@ -37,12 +38,14 @@ func load_map(map_data: MapData) -> void:
 			var index1 = path[i]
 			var index2 = path[i + 1]
 			map_nodes[index1].add_child_event(map_nodes[index2])
+	var current_node: MapNode = map_nodes[State.current_map_node]
+	current_node.set_type(MapNode.MAP_ICON.CURRENT)
 
 func _input(event: InputEvent) -> void:
 	# just for testing out generating maps for now
 	if event is InputEventMouseButton:
 		if event.pressed:
-			var data: MapData = generate(30,20,12)
+			var data: MapData = generate(30,total_nodes,12)
 			State.map_data = data
 			load_map(State.map_data)
 			
@@ -73,7 +76,11 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 			var dist_from_center = (point - center).length_squared()
 			# only accept points insode of a circle
 			var in_circle = dist_from_center <= plane_len * plane_len / 4
-			if not points.has(point) and in_circle:
+			var min_distance = INF
+			for thing in points:
+				if (point - thing).length_squared() < min_distance:
+					min_distance = (point - thing).length_squared()
+			if not points.has(point) and in_circle and min_distance > distance_apart:
 				points.append(point)
 				break
 

@@ -17,7 +17,8 @@ size_flags_vertical = 3
 script = ExtResource("1_gg7d2")
 combat_area = ExtResource("2_05utw")
 map_node = ExtResource("3_q65q5")
-map_scale = 15.0
+map_scale = 18.425
+distance_apart = 7.44
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
