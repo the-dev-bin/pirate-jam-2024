@@ -8,7 +8,7 @@ const margin = 16
 var children: Array = []
 
 @export_file("*.svg") var icons: Array[String] = []
-enum NODE_TYPE {COMBAT, ELITE, MYSTERY, SHOP, BOSS, CAMPFIRE, CURRENT, START}
+enum NODE_TYPE {COMBAT, ELITE, MYSTERY, SHOP, BOSS, CAMPFIRE, CURRENT, START, EMPTY}
 
 @export var button: Button
 
@@ -18,11 +18,15 @@ func add_child_event(child) -> void:
 		queue_redraw()
 
 func set_type(icon: NODE_TYPE) -> void:
+	if icon == NODE_TYPE.EMPTY:
+		button.icon = null
+		return
 	button.icon = ResourceLoader.load(icons[icon])
 
 func enable() -> void:
 	button.disabled = false
 	button.pressed.connect(pressed.emit)
+	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 func _draw():
 	for child in children:

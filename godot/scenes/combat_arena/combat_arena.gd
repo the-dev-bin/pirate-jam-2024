@@ -16,7 +16,7 @@ func _ready() -> void:
 		if enemies.size() > 2:
 			printerr('Enemies list too long')
 			return
-		
+
 		print(enemies)
 	else:
 		printerr('State did not pass enemies to node')

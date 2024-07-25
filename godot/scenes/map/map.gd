@@ -67,6 +67,7 @@ func load_map(map_data: MapData) -> void:
 func _on_map_node_pressed(index: int) -> void:
 	print('Pressed ' + str(index))
 
+	var current_node: MapNode = map_nodes[State.current_map_node]
 	State.current_map_node = index
 	if State.map_data.node_types[index] == MapNode.NODE_TYPE.COMBAT:
 		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
@@ -76,8 +77,15 @@ func _on_map_node_pressed(index: int) -> void:
 			"enemies": encounter.enemies,
 			"loot": null
 		}
-		fade_overlay.visible = true
-		fade_overlay.fade_out()
+	fade_overlay.visible = true
+	fade_overlay.fade_out()
+	var temp: MapNode = map_node.instantiate()
+	map_node_container.add_child(temp)
+	temp.global_position = current_node.global_position
+	temp.set_type(MapNode.NODE_TYPE.CURRENT)
+	current_node.set_type(MapNode.NODE_TYPE.EMPTY)
+	var tween = create_tween()
+	tween.tween_property(temp, "global_position", map_nodes[index].global_position, 0.5)
 
 
 func _on_fade_out_complete() -> void:
