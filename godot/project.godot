@@ -109,3 +109,6 @@ rotate_right={
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n/translation.de.translation", "res://i18n/translation.en.translation")
+
+[rendering]
+textures/vram_compression/import_etc2_astc=true
