@@ -1,6 +1,8 @@
 class_name MapNode
 extends Control
 
+signal pressed
+
 const margin = 16
 
 var children: Array = []
@@ -10,15 +12,17 @@ enum MAP_ICON {COMBAT, ELITE, MYSTERY, SHOP, BOSS, CAMPFIRE, CURRENT}
 
 @export var button: Button
 
-func add_child_event(child):
+func add_child_event(child) -> void:
 	if !children.has(child):
 		children.append(child)
 		queue_redraw()
 
-func set_type(icon: MAP_ICON):
-	#
+func set_type(icon: MAP_ICON) -> void:
 	button.icon = ResourceLoader.load(icons[icon])
 
+func enable() -> void:
+	button.disabled = false
+	button.pressed.connect(pressed.emit)
 
 func _draw():
 	for child in children:

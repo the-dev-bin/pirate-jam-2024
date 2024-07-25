@@ -15,10 +15,10 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_gg7d2")
-combat_area = ExtResource("2_05utw")
-map_node = ExtResource("3_q65q5")
 map_scale = 18.425
 distance_apart = 7.44
+combat_area = ExtResource("2_05utw")
+map_node = ExtResource("3_q65q5")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 2
@@ -26,21 +26,15 @@ offset_right = 1519.0
 offset_bottom = 658.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(0.330086, 0.496596, 0.251939, 1)
+color = Color(0.14902, 0.0509804, 0.203922, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-vertical_scroll_mode = 2
-
-[node name="MapNodeContainer" type="Control" parent="ScrollContainer"]
+[node name="MapNodeContainer" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 2
+anchors_preset = 0
+offset_left = 51.0
+offset_top = 54.0
+offset_right = 890.0
+offset_bottom = 571.0
 size_flags_horizontal = 3
 size_flags_vertical = 3

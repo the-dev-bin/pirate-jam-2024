@@ -1,28 +1,29 @@
 extends Control
 
+@export var map_scale: float = 1.0
+@export var distance_apart: float = 1.0
+@export var total_nodes:int = 12
+@export_subgroup("Spawn pools")
+@export var enemy_spawn_zones: Array[EnemySpawnZone] = []
+@export_subgroup("Packed Scenes")
 @export var combat_area: PackedScene
 @export var treasure_room: PackedScene
 @export var shop: PackedScene
-
 @export var map_node: PackedScene
-@export var map_scale = 1.0
-@export var distance_apart: float = 1.0
-@export var total_nodes = 12
-var map_nodes = {}
 
+var map_nodes = {}
 @onready var map_node_container: Control = %MapNodeContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if State.map_data:
 		pass
-		# already exists
 	else:
 		var data: MapData = generate(30,total_nodes,12)
 		State.map_data = data
 	load_map(State.map_data)
 
 func load_map(map_data: MapData) -> void:
-
+	map_nodes = {}
 	for child in map_node_container.get_children():
 		child.queue_free()
 
@@ -40,16 +41,24 @@ func load_map(map_data: MapData) -> void:
 			map_nodes[index1].add_child_event(map_nodes[index2])
 	var current_node: MapNode = map_nodes[State.current_map_node]
 	current_node.set_type(MapNode.MAP_ICON.CURRENT)
+	current_node.enable() # just to get the styling right
+	if current_node.children:
+		for child in current_node.children:
+			child.enable()
+			var index: int = 0
+			for thing in map_nodes.keys():
+				if map_nodes[thing] == child:
+					index = thing
+					break
+			child.pressed.connect(_on_map_node_pressed.bind(index))
 
-func _input(event: InputEvent) -> void:
-	# just for testing out generating maps for now
-	if event is InputEventMouseButton:
-		if event.pressed:
-			var data: MapData = generate(30,total_nodes,12)
-			State.map_data = data
-			load_map(State.map_data)
-			
-func _on_enemy_button_pressed():
+func _on_map_node_pressed(index: int) -> void:
+	print('Pressed ' + str(index))
+	State.current_map_node = index
+	load_map(State.map_data)
+
+
+func _on_enemy_button_pressed() -> void:
 	var enemy_encounter_button: CombatNode = %EnemyEncounterButton
 	var encounter: EnemySpawnEntry = enemy_encounter_button.spawn_zone.get_encounter()
 	print(encounter.enemies[0].name)
@@ -124,3 +133,4 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 	var data: MapData = MapData.new()
 	data.set_paths(paths, points)
 	return data
+

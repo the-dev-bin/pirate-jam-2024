@@ -5,4 +5,5 @@ var player_deck : Array[Ingredient] = [load("res://scenes/ingredient_block/resou
 
 var map_data: MapData
 var current_map_node: int = 0
+var total_nodes_passed: int = 0
 var map_node_parameters: Dictionary = {}
