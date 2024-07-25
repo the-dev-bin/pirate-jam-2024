@@ -1,4 +1,4 @@
-extends TextureButton
+extends Button
 
 const margin = 10
 
@@ -10,7 +10,7 @@ func add_child_event(child):
 		queue_redraw()
 
 func _draw():
-	draw_circle(Vector2.ZERO, 4, Color.WHITE_SMOKE)
+	# draw_circle(Vector2.ZERO, 4, Color.WHITE_SMOKE)
 	
 	for child in children:
 		var line = child.position - position
