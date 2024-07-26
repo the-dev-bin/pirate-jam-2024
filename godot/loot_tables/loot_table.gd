@@ -12,7 +12,9 @@ func get_loot(quantity: int) -> Array[LootTableEntry]:
 	for i in quantity:
 		var weights: Array = temp.map(get_weights)
 		var index: int = rng.rand_weighted(weights)
-		output.push_back(temp.pop_at(index))
+		var item = temp.pop_at(index)
+		if item:
+			output.push_back(item)
 	return output
 
 func get_weights(loot_entry: LootTableEntry) -> float:

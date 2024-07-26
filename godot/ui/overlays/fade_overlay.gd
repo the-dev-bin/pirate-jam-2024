@@ -26,7 +26,7 @@ func fade_out() -> void:
 	.finished.connect(_on_complete_fade_out)
 
 func _on_complete_fade_out() -> void:
-	emit_signal("on_complete_fade_out")
+	on_complete_fade_out.emit()
 	
 func _on_complete_fade_in() -> void:
-	emit_signal("on_complete_fade_in")
+	on_complete_fade_in.emit()

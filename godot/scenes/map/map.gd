@@ -91,6 +91,9 @@ func _on_map_node_pressed(index: int) -> void:
 func _on_fade_out_complete() -> void:
 	if queued_scene:
 		get_tree().change_scene_to_packed(queued_scene)
+	else:
+		load_map(State.map_data)
+		fade_overlay.fade_in()
 
 
 
