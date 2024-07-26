@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://b08icw3rhyjdm"]
+[gd_scene load_steps=9 format=3 uid="uid://b08icw3rhyjdm"]
 
 [ext_resource type="Script" path="res://scenes/combat_arena/combat_arena.gd" id="1_3j36f"]
 [ext_resource type="PackedScene" uid="uid://sh2tec1kvvnv" path="res://scenes/cauldron/cauldron.tscn" id="1_ne5b2"]
 [ext_resource type="PackedScene" uid="uid://bq4bpebcy5h4d" path="res://scenes/component_pouch/component_pouch.tscn" id="2_6n2cw"]
+[ext_resource type="PackedScene" uid="uid://da05b17xnp2s1" path="res://ui/menues/combat_end/combat_end.tscn" id="2_a7uwy"]
 [ext_resource type="PackedScene" uid="uid://dksentt5dji3p" path="res://scenes/tooltip/ingredient_tooltip.tscn" id="3_4gmlw"]
+[ext_resource type="Resource" uid="uid://b181mahpm5jwp" path="res://loot_tables/resources/base_table.tres" id="3_g53h1"]
 [ext_resource type="PackedScene" uid="uid://d0myqt3wxsrtt" path="res://scenes/enemy/enemy_spawn_point.tscn" id="5_gk7dw"]
 [ext_resource type="PackedScene" uid="uid://dw74q47ldjy8w" path="res://scenes/player/player.tscn" id="6_ucnf1"]
 
 [node name="CombatArena" type="Node2D"]
 script = ExtResource("1_3j36f")
+combat_end_scene = ExtResource("2_a7uwy")
+test_loot_table = ExtResource("3_g53h1")
 
 [node name="Cauldron" parent="." instance=ExtResource("1_ne5b2")]
 unique_name_in_owner = true
@@ -47,3 +51,27 @@ position = Vector2(844, 346)
 [node name="Player" parent="." instance=ExtResource("6_ucnf1")]
 unique_name_in_owner = true
 position = Vector2(77, 225)
+
+[node name="BattleEndButton" type="Button" parent="."]
+unique_name_in_owner = true
+offset_left = 249.0
+offset_top = 511.0
+offset_right = 401.0
+offset_bottom = 542.0
+text = "End Battle (Debug)"
+
+[node name="PositionAnchor" type="Control" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(960, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 960.0
+offset_bottom = 640.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
