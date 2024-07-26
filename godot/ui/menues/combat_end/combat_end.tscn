@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://da05b17xnp2s1"]
+[gd_scene load_steps=3 format=3 uid="uid://da05b17xnp2s1"]
 
 [ext_resource type="Script" path="res://ui/menues/combat_end/combat_end.gd" id="1_6klcw"]
 [ext_resource type="PackedScene" uid="uid://d18qwoapux4ls" path="res://ui/components/card_pickup/ingredient_pickup.tscn" id="1_fdacb"]
-[ext_resource type="PackedScene" uid="uid://yefrl1id42su" path="res://scenes/map/map.tscn" id="3_s3s54"]
 
 [node name="CombatEnd" type="Control"]
 layout_mode = 3
@@ -13,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_6klcw")
 ingredient_button_scene = ExtResource("1_fdacb")
-map_scene = ExtResource("3_s3s54")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
