@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_fr8q3"]
 
 [node name="BlockPreview" type="Control"]
+modulate = Color(0.996078, 0.423529, 0.564706, 1)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

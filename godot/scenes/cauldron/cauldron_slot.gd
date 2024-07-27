@@ -19,5 +19,5 @@ var block_rotation: float
 
 
 func _notification(what:int)->void:
-	if what == Node.NOTIFICATION_DRAG_END:
-		modulate = Color.WHITE
+	if what == Node.NOTIFICATION_DRAG_END and ingredient:
+		modulate = ingredient.color

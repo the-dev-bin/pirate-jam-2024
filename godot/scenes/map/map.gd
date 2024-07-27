@@ -106,7 +106,7 @@ func _on_map_node_pressed(index: int) -> void:
 		}
 	elif current_node_type == MapNode.NODE_TYPE.CAMPFIRE:
 		# for now just heal the player?
-		State.player_stats.current_health = State.palyer_stats.max_health
+		State.player_stats.current_health = State.player_stats.max_health
 	elif current_node_type == MapNode.NODE_TYPE.ELITE:
 		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
 		print(encounter.enemies[0].name)

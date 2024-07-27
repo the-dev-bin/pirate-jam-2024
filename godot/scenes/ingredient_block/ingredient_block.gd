@@ -30,6 +30,7 @@ func setup(_block_data: Ingredient) -> void:
 	$TextureRect.texture = ResourceLoader.load(ingredient_resource.image)
 	if on_board:
 		mouse_filter = MOUSE_FILTER_IGNORE
+	modulate = ingredient_resource.color
 
 func parse_structure(points: Array[Vector2]) -> void:
 	for point in points:
@@ -55,4 +56,4 @@ func _get_drag_data(_at_position:Vector2)->Variant:
 
 func _notification(what:int)->void:
 	if what == Node.NOTIFICATION_DRAG_END:
-		modulate = Color.WHITE
+		modulate = ingredient_resource.color
