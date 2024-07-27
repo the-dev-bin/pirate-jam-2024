@@ -50,13 +50,13 @@ offset_bottom = 256.0
 text = "End Turn"
 
 [node name="EnemySpawnPoint" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(529, 340)
+position = Vector2(555, 248)
 
 [node name="EnemySpawnPoint2" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(689, 420)
+position = Vector2(762, 398)
 
 [node name="EnemySpawnPoint3" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(844, 346)
+position = Vector2(958, 239)
 
 [node name="Player" parent="." instance=ExtResource("6_ucnf1")]
 unique_name_in_owner = true
