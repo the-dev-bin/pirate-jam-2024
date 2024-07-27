@@ -10,15 +10,17 @@ extends Node2D
 
 
 @export var combat_end_scene: PackedScene
+@export var combat_lose_scene: PackedScene
 @export var test_loot_table: LootTable
 
 @export var enemy_spawns: Array[EnemySpawnPoint] = []
-
+var enemy_nodes = []
 func _ready() -> void:
 	%BattleEndButton.pressed.connect(end_battle)
 	cauldron.toggle_tooltip.connect(_on_toggle_tooltip)
 	ingredient_pouch.toggle_tooltip.connect(_on_toggle_tooltip)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
+	State.player_stats.health_changed.connect(_on_player_health_changed)
 
 	if State.map_node_parameters.has('enemies'):
 		var enemies: Array[Enemy] = State.map_node_parameters['enemies']
@@ -27,9 +29,10 @@ func _ready() -> void:
 			return
 		for i in enemies.size():
 			var enemy_spawn_point: EnemySpawnPoint = enemy_spawns[i]
-			enemy_spawn_point.spawn_enemy(enemies[i])
+			enemy_spawn_point.spawn_enemy(enemies[i].duplicate(true))
 			var enemy = enemy_spawn_point.get_enemy_node()
 			enemy.update_intent()
+			enemy_nodes.push_back(enemy)
 	else:
 		printerr('State did not pass enemies to node')
 		var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
@@ -72,3 +75,9 @@ func end_battle():
 	thing.setup(test_loot_table)
 	process_mode = PROCESS_MODE_DISABLED # pause background since we're done with battle and don't want interactions to work there
 	# the anchor control node is setup to process always and isn't affected by this
+
+func _on_player_health_changed(new_health):
+	if new_health <= 0:
+		var thing = combat_lose_scene.instantiate()
+		position_anchor.add_child(thing)
+		process_mode = PROCESS_MODE_DISABLED
