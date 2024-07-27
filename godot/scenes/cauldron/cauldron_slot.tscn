@@ -9,13 +9,14 @@ border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0, 0, 0, 1)
+border_blend = true
 
 [node name="CauldronSlot" type="PanelContainer"]
-custom_minimum_size = Vector2(34, 34)
+custom_minimum_size = Vector2(32, 32)
 offset_left = -16.0
 offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 18.0
+offset_bottom = 18.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3hkv6")
 script = ExtResource("1_2myce")
