@@ -6,7 +6,7 @@ extends Node2D
 @onready var ingredient_tooltip: IngredientTooltip = %IngredientTooltip
 @onready var end_turn_button: Button = %EndTurnButton
 @onready var player_node: Player = %Player
-@onready var position_anchor: Control = %PositionAnchor
+@onready var position_anchor: CanvasLayer = %PositionAnchor
 
 
 @export var combat_end_scene: PackedScene
