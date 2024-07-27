@@ -3,9 +3,15 @@ extends Node2D
 
 var enemy: Enemy
 @export var enemy_scene: PackedScene
-@onready var enemy_node: EnemyNode = $Enemy
 
+@onready var enemy_node: EnemyNode = $Enemy
+@onready var button: Button = $Button
+@onready var selected_crosshair = %SelectedCrosshair
+
+signal pressed
 func _ready() -> void:
+	button.pressed.connect(_on_button_pressed)
+	button.visible = false
 	remove_enemy()
 
 func get_enemy() -> Enemy:
@@ -26,4 +32,11 @@ func spawn_enemy(_enemy: Enemy) -> void:
 	enemy_node = enemy_scene.instantiate()
 	add_child(enemy_node)
 	enemy_node.setup(enemy)
+	button.visible = true
 
+
+func _on_button_pressed():
+	pressed.emit()
+
+func set_selected_crosshair(value: bool) -> void:
+	selected_crosshair.visible = value

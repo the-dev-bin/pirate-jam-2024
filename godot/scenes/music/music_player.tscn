@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cks2rale2d6so"]
+
+[ext_resource type="AudioStream" uid="uid://dn34lw724d2xn" path="res://music/potions-main-theme.ogg" id="1_x5uxg"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_x5uxg")
+volume_db = -27.378
+autoplay = true
+bus = &"Music"

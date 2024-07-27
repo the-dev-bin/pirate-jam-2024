@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b08icw3rhyjdm"]
+[gd_scene load_steps=11 format=3 uid="uid://b08icw3rhyjdm"]
 
 [ext_resource type="Script" path="res://scenes/combat_arena/combat_arena.gd" id="1_3j36f"]
 [ext_resource type="PackedScene" uid="uid://sh2tec1kvvnv" path="res://scenes/cauldron/cauldron.tscn" id="1_ne5b2"]
@@ -6,17 +6,23 @@
 [ext_resource type="PackedScene" uid="uid://da05b17xnp2s1" path="res://ui/menues/combat_end/combat_end.tscn" id="2_a7uwy"]
 [ext_resource type="PackedScene" uid="uid://dksentt5dji3p" path="res://scenes/tooltip/ingredient_tooltip.tscn" id="3_4gmlw"]
 [ext_resource type="Resource" uid="uid://b181mahpm5jwp" path="res://loot_tables/resources/base_table.tres" id="3_g53h1"]
+[ext_resource type="PackedScene" uid="uid://cv2h84fehj0md" path="res://ui/menues/combat_lose/combat_lose.tscn" id="3_i56cf"]
 [ext_resource type="PackedScene" uid="uid://d0myqt3wxsrtt" path="res://scenes/enemy/enemy_spawn_point.tscn" id="5_gk7dw"]
 [ext_resource type="PackedScene" uid="uid://dw74q47ldjy8w" path="res://scenes/player/player.tscn" id="6_ucnf1"]
+[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="9_6r2wp"]
 
-[node name="CombatArena" type="Node2D"]
+[node name="CombatArena" type="Node2D" node_paths=PackedStringArray("enemy_spawns")]
 script = ExtResource("1_3j36f")
 combat_end_scene = ExtResource("2_a7uwy")
+combat_lose_scene = ExtResource("3_i56cf")
 test_loot_table = ExtResource("3_g53h1")
+enemy_spawns = [NodePath("EnemySpawnPoint"), NodePath("EnemySpawnPoint2"), NodePath("EnemySpawnPoint3")]
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-offset_right = 1831.0
-offset_bottom = 859.0
+offset_left = -478.0
+offset_top = -72.0
+offset_right = 1353.0
+offset_bottom = 787.0
 
 [node name="Cauldron" parent="." instance=ExtResource("1_ne5b2")]
 unique_name_in_owner = true
@@ -44,38 +50,28 @@ offset_bottom = 256.0
 text = "End Turn"
 
 [node name="EnemySpawnPoint" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(529, 340)
+position = Vector2(555, 248)
 
 [node name="EnemySpawnPoint2" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(689, 420)
+position = Vector2(762, 398)
 
 [node name="EnemySpawnPoint3" parent="." instance=ExtResource("5_gk7dw")]
-position = Vector2(844, 346)
+position = Vector2(958, 239)
 
 [node name="Player" parent="." instance=ExtResource("6_ucnf1")]
 unique_name_in_owner = true
-position = Vector2(77, 225)
+position = Vector2(81, 203)
 
-[node name="BattleEndButton" type="Button" parent="."]
-unique_name_in_owner = true
-offset_left = 249.0
-offset_top = 511.0
-offset_right = 401.0
-offset_bottom = 542.0
-text = "End Battle (Debug)"
-
-[node name="PositionAnchor" type="Control" parent="."]
+[node name="PositionAnchor" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
-custom_minimum_size = Vector2(960, 640)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 960.0
-offset_bottom = 640.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
+
+[node name="FadeOverlay" parent="PositionAnchor" instance=ExtResource("9_6r2wp")]
+visible = false
+offset_left = -83.0
+offset_top = -49.0
+offset_right = 75.0
+offset_bottom = 42.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0

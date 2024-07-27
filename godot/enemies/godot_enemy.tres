@@ -1,20 +1,32 @@
-[gd_resource type="Resource" script_class="Enemy" load_steps=7 format=3 uid="uid://s4mog50ms2x1"]
+[gd_resource type="Resource" script_class="Enemy" load_steps=9 format=3 uid="uid://s4mog50ms2x1"]
 
 [ext_resource type="Script" path="res://scenes/enemy/EnemyResource.gd" id="1_0o1tj"]
 [ext_resource type="Script" path="res://scenes/enemy/EnemyActionEntry.gd" id="1_aahbp"]
 [ext_resource type="PackedScene" uid="uid://bpjytsy4xgl5g" path="res://enemies/enemy_actions/attack_action.tscn" id="2_tudl2"]
+[ext_resource type="PackedScene" uid="uid://bv0lkaw0ba2x6" path="res://enemies/enemy_actions/defend_action.tscn" id="3_32b6j"]
 [ext_resource type="Script" path="res://scenes/Stats.gd" id="3_edr8k"]
 
 [sub_resource type="Resource" id="Resource_fro0g"]
 script = ExtResource("1_aahbp")
 likelihood = 10
-id = ""
+id = "generic_attack"
 followup = ""
 scene = ExtResource("2_tudl2")
 params = {
 "damage": 5
 }
 intent = 0
+
+[sub_resource type="Resource" id="Resource_w0tuc"]
+script = ExtResource("1_aahbp")
+likelihood = 0
+id = "defend_action"
+followup = ""
+scene = ExtResource("3_32b6j")
+params = {
+"min_value": 3
+}
+intent = 1
 
 [sub_resource type="Resource" id="Resource_uq4uh"]
 script = ExtResource("3_edr8k")
@@ -25,5 +37,5 @@ defense = 0
 script = ExtResource("1_0o1tj")
 name = "Godot Test Enemy"
 sprite = "res://icon.svg"
-actions = Array[ExtResource("1_aahbp")]([SubResource("Resource_fro0g")])
+actions = Array[ExtResource("1_aahbp")]([SubResource("Resource_fro0g"), SubResource("Resource_w0tuc")])
 stats = SubResource("Resource_uq4uh")
