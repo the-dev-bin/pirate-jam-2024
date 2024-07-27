@@ -16,5 +16,5 @@ func setup(ingredient: Ingredient) -> void:
 	var block: IngredientBlock = ingredient_block_scene.instantiate()
 	block.setup(ingredient)
 	block.on_board = true # this just disables the drag stuff
-
+	block_container.add_child(block)
 	name_label.text = ingredient.ingredient_name
