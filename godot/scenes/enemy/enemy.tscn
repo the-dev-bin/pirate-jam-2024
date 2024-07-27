@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu8jbr1tfuict"]
+[gd_scene load_steps=4 format=3 uid="uid://bu8jbr1tfuict"]
 
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_q1r4t"]
 [ext_resource type="Script" path="res://scenes/enemy/enemy_node.gd" id="1_q3eh5"]
+[ext_resource type="PackedScene" uid="uid://cq5hja7dqauom" path="res://ui/components/health_bar/health_bar_container.tscn" id="3_oatg3"]
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_q3eh5")
@@ -16,34 +17,5 @@ unique_name_in_owner = true
 position = Vector2(2, -151)
 texture = ExtResource("1_q1r4t")
 
-[node name="HealthBarContainer" type="PanelContainer" parent="."]
-offset_left = -80.0
-offset_top = 79.0
-offset_right = 80.0
-offset_bottom = 120.0
-
-[node name="HealthProgressBar" type="ProgressBar" parent="HealthBarContainer"]
+[node name="HealthBarContainer" parent="." instance=ExtResource("3_oatg3")]
 unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-value = 76.43
-show_percentage = false
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HealthBarContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="CurrentHealthLabel" type="Label" parent="HealthBarContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "13"
-
-[node name="Label2" type="Label" parent="HealthBarContainer/HBoxContainer"]
-layout_mode = 2
-text = "/"
-
-[node name="MaxHealthLabel" type="Label" parent="HealthBarContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "19"
