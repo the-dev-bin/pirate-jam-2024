@@ -15,16 +15,18 @@ enum LOOT_PROGRESSION {START, START_MID, MID, MID_END, END}
 @export var treasure_room: PackedScene
 @export var shop: PackedScene
 @export var map_node: PackedScene
-
+@export var inventory_screen: PackedScene
 var map_nodes = {}
 @onready var map_node_container: Control = %MapNodeContainer
 @onready var fade_overlay: FadeOverlay = %FadeOverlay
+@onready var inventory_button: Button = %InventoryButton
 
 
 var queued_scene: PackedScene
 
 func _ready() -> void:
 	fade_overlay.on_complete_fade_out.connect(_on_fade_out_complete)
+	inventory_button.pressed.connect(_on_inventory_button_pressed)
 	setup_map()
 
 func setup_map():
@@ -239,3 +241,9 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 		data.node_types[1] = MapNode.NODE_TYPE.BOSS
 	# also need to figure out resting spots
 	return data
+
+
+func _on_inventory_button_pressed():
+	print('asdboubwe')
+	var temp = inventory_screen.instantiate()
+	$CanvasLayer.add_child(temp)

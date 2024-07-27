@@ -58,7 +58,7 @@ position = Vector2(844, 346)
 
 [node name="Player" parent="." instance=ExtResource("6_ucnf1")]
 unique_name_in_owner = true
-position = Vector2(77, 225)
+position = Vector2(81, 203)
 
 [node name="BattleEndButton" type="Button" parent="."]
 unique_name_in_owner = true

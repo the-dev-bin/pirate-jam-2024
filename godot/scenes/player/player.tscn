@@ -13,3 +13,5 @@ texture = ExtResource("2_s86pq")
 
 [node name="HealthBarContainer" parent="." instance=ExtResource("3_wjw0q")]
 unique_name_in_owner = true
+offset_left = -68.0
+offset_right = 69.0
