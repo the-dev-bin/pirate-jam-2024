@@ -95,7 +95,8 @@ func _on_map_node_pressed(index: int) -> void:
 		queued_scene = combat_area
 		State.map_node_parameters = {
 			"enemies": encounter.enemies,
-			"loot": null
+			"loot": null,
+			"boss": true
 		}
 	elif current_node_type == MapNode.NODE_TYPE.TREASURE:
 		var loot: LootTable = treasure_loot_pools[0]

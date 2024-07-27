@@ -11,6 +11,7 @@ extends Node2D
 
 @export var combat_end_scene: PackedScene
 @export var combat_lose_scene: PackedScene
+@export var game_end_screen: PackedScene
 @export var test_loot_table: LootTable
 
 @export var enemy_spawns: Array[EnemySpawnPoint] = []
@@ -77,11 +78,17 @@ func _on_end_turn_button_pressed():
 		enemy.update_intent()
 		ingredient_pouch.clear_hand()
 		ingredient_pouch.draw_hand()
+	if get_alive_enemies().size() <= 0:
+		end_battle()
 
 func end_battle():
-	var thing: CombatEndScene = combat_end_scene.instantiate()
-	position_anchor.add_child(thing)
-	thing.setup(test_loot_table)
+	if State.map_node_parameters.has('boss'):
+		var thing = game_end_screen.instantiate()
+		position_anchor.add_child(thing)
+	else:
+		var thing: CombatEndScene = combat_end_scene.instantiate()
+		position_anchor.add_child(thing)
+		thing.setup(test_loot_table)
 	process_mode = PROCESS_MODE_DISABLED # pause background since we're done with battle and don't want interactions to work there
 	# the anchor control node is setup to process always and isn't affected by this
 
