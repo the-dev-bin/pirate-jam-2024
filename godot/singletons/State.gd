@@ -12,7 +12,7 @@ var map_node_parameters: Dictionary = {}
 
 var player_stats : Stats = Stats.new()
 
-func _init(health: int = 5, max_health: int = 10) -> void:
+func _init(health: int = 5, max_health: int = 100) -> void:
   player_stats = Stats.new()
   player_stats.current_health = max_health
   player_stats.max_health = max_health
