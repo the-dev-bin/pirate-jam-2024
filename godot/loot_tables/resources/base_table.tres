@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="LootTable" load_steps=8 format=3 uid="uid://b181mahpm5jwp"]
+
+[ext_resource type="Script" path="res://loot_tables/LootTableEntry.gd" id="1_5p5ur"]
+[ext_resource type="Script" path="res://loot_tables/loot_table.gd" id="1_pcdo4"]
+[ext_resource type="Resource" uid="uid://bahbxo6wc30m4" path="res://ingredients/resources/godot_single.tres" id="2_0u5as"]
+[ext_resource type="Resource" uid="uid://cyhd24hu3rkmq" path="res://ingredients/resources/l_block.tres" id="3_g1scy"]
+
+[sub_resource type="Resource" id="Resource_rwm6v"]
+script = ExtResource("1_5p5ur")
+ingredient = ExtResource("2_0u5as")
+likelihood = 1
+
+[sub_resource type="Resource" id="Resource_mk8fk"]
+script = ExtResource("1_5p5ur")
+ingredient = ExtResource("3_g1scy")
+likelihood = 1
+
+[sub_resource type="Resource" id="Resource_p8m23"]
+script = ExtResource("1_5p5ur")
+ingredient = ExtResource("2_0u5as")
+likelihood = 1
+
+[resource]
+script = ExtResource("1_pcdo4")
+loot = Array[ExtResource("1_5p5ur")]([SubResource("Resource_rwm6v"), SubResource("Resource_mk8fk"), SubResource("Resource_p8m23")])
+money_range = Array[int]([5, 15])

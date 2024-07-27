@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://53rb465uiakc"]
+
+[ext_resource type="Script" path="res://ui/components/ingredient_select/ingredient_select.gd" id="1_7s0od"]
+[ext_resource type="PackedScene" uid="uid://cxhab1i60ia0t" path="res://ui/components/ingredient_card/ingredient_card.tscn" id="2_1b1fu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsmjt"]
+bg_color = Color(0.203922, 0.203922, 0.203922, 0.545098)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_7s0od")
+ingredient_card_scene = ExtResource("2_1b1fu")
+
+[node name="IngredientSelect" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fsmjt")
+
+[node name="CenterContainer" type="CenterContainer" parent="IngredientSelect"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="IngredientSelect/CenterContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="IngredientSelect/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="IngredientSelect/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="SelectionContainer" type="HBoxContainer" parent="IngredientSelect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="IngredientCard" parent="IngredientSelect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("2_1b1fu")]
+layout_mode = 2
+
+[node name="IngredientCard2" parent="IngredientSelect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("2_1b1fu")]
+layout_mode = 2
+
+[node name="IngredientCard3" parent="IngredientSelect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/SelectionContainer" instance=ExtResource("2_1b1fu")]
+layout_mode = 2
+
+[node name="SkipButton" type="Button" parent="IngredientSelect/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Skip"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d18qwoapux4ls"]
+
+[ext_resource type="Texture2D" uid="uid://d1cir2xaem2e" path="res://assets/kenney_assets/board_game_icons/cards_collection.svg" id="1_xpsbd"]
+[ext_resource type="Script" path="res://ui/components/card_pickup/ingredient_pickup.gd" id="1_yye3k"]
+[ext_resource type="PackedScene" uid="uid://53rb465uiakc" path="res://ui/components/ingredient_select/ingredient_select.tscn" id="3_k6dl6"]
+
+[node name="IngredientPickup" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Pickup Card"
+icon = ExtResource("1_xpsbd")
+expand_icon = true
+script = ExtResource("1_yye3k")
+ingredient_select_menu = ExtResource("3_k6dl6")

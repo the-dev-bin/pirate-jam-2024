@@ -6,7 +6,14 @@ extends Node2D
 @onready var ingredient_tooltip: IngredientTooltip = %IngredientTooltip
 @onready var end_turn_button: Button = %EndTurnButton
 @onready var player_node: Player = %Player
+@onready var position_anchor: Control = %PositionAnchor
+
+
+@export var combat_end_scene: PackedScene
+@export var test_loot_table: LootTable
+
 func _ready() -> void:
+	%BattleEndButton.pressed.connect(end_battle)
 	cauldron.toggle_tooltip.connect(_on_toggle_tooltip)
 	ingredient_pouch.toggle_tooltip.connect(_on_toggle_tooltip)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
@@ -57,3 +64,9 @@ func _on_end_turn_button_pressed():
 	ingredient_pouch.clear_hand()
 	ingredient_pouch.draw_hand()
 
+func end_battle():
+	var thing: CombatEndScene = combat_end_scene.instantiate()
+	position_anchor.add_child(thing)
+	thing.setup(test_loot_table)
+	process_mode = PROCESS_MODE_DISABLED # pause background since we're done with battle and don't want interactions to work there
+	# the anchor control node is setup to process always and isn't affected by this

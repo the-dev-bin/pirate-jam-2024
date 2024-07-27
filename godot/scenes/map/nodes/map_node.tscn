@@ -9,7 +9,7 @@ anchors_preset = 0
 offset_right = 32.0
 offset_bottom = 32.0
 script = ExtResource("2_6jj6h")
-icons = Array[String](["res://assets/kenney_assets/board_game_icons/sword.svg", "res://assets/kenney_assets/board_game_icons/skull.svg", "res://assets/kenney_assets/board_game_icons/rhombus_question.svg", "res://assets/kenney_assets/board_game_icons/dollar.svg", "res://assets/kenney_assets/board_game_icons/character.svg", "res://assets/kenney_assets/board_game_icons/campfire.svg", "res://assets/kenney_assets/board_game_icons/crown_a.svg", "res://assets/kenney_assets/board_game_icons/tag_empty.svg"])
+icons = Array[String](["res://assets/kenney_assets/board_game_icons/sword.svg", "res://assets/kenney_assets/board_game_icons/skull.svg", "res://assets/kenney_assets/board_game_icons/rhombus_question.svg", "res://assets/kenney_assets/board_game_icons/tokens_stack.svg", "res://assets/kenney_assets/board_game_icons/character.svg", "res://assets/kenney_assets/board_game_icons/campfire.svg", "res://assets/kenney_assets/board_game_icons/crown_a.svg", "res://assets/kenney_assets/board_game_icons/tag_empty.svg"])
 button = NodePath("Button")
 
 [node name="Button" type="Button" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://yefrl1id42su"]
+[gd_scene load_steps=15 format=3 uid="uid://yefrl1id42su"]
 
 [ext_resource type="Script" path="res://scenes/map/map.gd" id="1_gg7d2"]
 [ext_resource type="PackedScene" uid="uid://b08icw3rhyjdm" path="res://scenes/combat_arena/combat_arena.tscn" id="2_05utw"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bjsli15ybap6k" path="res://scenes/map/nodes/map_node.tscn" id="3_q65q5"]
 [ext_resource type="Script" path="res://scenes/enemy/EnemyResource.gd" id="4_yq4ir"]
 [ext_resource type="Resource" uid="uid://s4mog50ms2x1" path="res://enemies/godot_enemy.tres" id="5_35v1j"]
+[ext_resource type="Script" path="res://loot_tables/loot_table.gd" id="6_dhmc2"]
+[ext_resource type="Resource" uid="uid://b181mahpm5jwp" path="res://loot_tables/resources/base_table.tres" id="7_xe3bf"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="8_kgtk5"]
+[ext_resource type="PackedScene" uid="uid://sqg1akietuwt" path="res://scenes/treasure_room/treasure_room.tscn" id="9_f4fgc"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="9_wb6qe"]
 
 [sub_resource type="Resource" id="Resource_4a6q1"]
@@ -33,7 +36,10 @@ script = ExtResource("1_gg7d2")
 map_scale = 18.425
 distance_apart = 7.44
 enemy_spawn_zones = Array[ExtResource("2_ji1x5")]([SubResource("Resource_igesl")])
+enemy_loot_pools = Array[ExtResource("6_dhmc2")]([ExtResource("7_xe3bf")])
+treasure_loot_pools = Array[ExtResource("6_dhmc2")]([ExtResource("7_xe3bf")])
 combat_area = ExtResource("2_05utw")
+treasure_room = ExtResource("9_f4fgc")
 map_node = ExtResource("3_q65q5")
 
 [node name="UI" type="CanvasLayer" parent="."]
