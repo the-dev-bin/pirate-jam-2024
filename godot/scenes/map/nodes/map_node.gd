@@ -8,7 +8,7 @@ const margin = 16
 var children: Array = []
 
 @export_file("*.svg") var icons: Array[String] = []
-enum NODE_TYPE {COMBAT, ELITE, MYSTERY, TREASURE, SHOP, BOSS, CAMPFIRE, CURRENT, START, EMPTY}
+enum NODE_TYPE {COMBAT, ELITE, MYSTERY, TREASURE, BOSS, CAMPFIRE, CURRENT, START, EMPTY}
 
 @export var button: Button
 

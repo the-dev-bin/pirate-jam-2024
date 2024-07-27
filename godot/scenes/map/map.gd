@@ -103,6 +103,7 @@ func _on_map_node_pressed(index: int) -> void:
 		}
 		pass
 	elif current_node_type == MapNode.NODE_TYPE.CAMPFIRE:
+		# for now just heal the player?
 		pass
 	elif current_node_type == MapNode.NODE_TYPE.ELITE:
 		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
@@ -113,9 +114,21 @@ func _on_map_node_pressed(index: int) -> void:
 			"loot": null
 		}
 	elif current_node_type == MapNode.NODE_TYPE.MYSTERY:
-		pass
-	elif current_node_type == MapNode.NODE_TYPE.SHOP:
-		pass
+		var choice: int= randi_range(0,1)
+		if choice > 0:
+			var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
+			queued_scene = combat_area
+			State.map_node_parameters = {
+				"enemies": encounter.enemies,
+				"loot": null
+			}
+		else:
+			var loot: LootTable = treasure_loot_pools[0]
+			queued_scene = treasure_room
+			State.map_node_parameters = {
+				"loot": loot
+			}
+
 	fade_overlay.visible = true
 	fade_overlay.fade_out()
 	var temp: MapNode = map_node.instantiate()
@@ -209,8 +222,7 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 	var weights: Array = [
 		10.0, # COMBAT
 		3.0, # ELITE
-		3.0, # MYSTERY
-		2.5, # SHOP
+		7.0, # MYSTERY
 		5.0, # TREASURE
 		]
 
