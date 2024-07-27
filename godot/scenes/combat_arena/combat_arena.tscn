@@ -14,6 +14,10 @@ script = ExtResource("1_3j36f")
 combat_end_scene = ExtResource("2_a7uwy")
 test_loot_table = ExtResource("3_g53h1")
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_right = 1483.0
+offset_bottom = 844.0
+
 [node name="Cauldron" parent="." instance=ExtResource("1_ne5b2")]
 unique_name_in_owner = true
 offset_left = 163.0

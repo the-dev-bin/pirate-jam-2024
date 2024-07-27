@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://dksentt5dji3p"]
+[gd_scene load_steps=3 format=3 uid="uid://dksentt5dji3p"]
 
 [ext_resource type="Script" path="res://scenes/tooltip/ingredient_tooltip.gd" id="1_ocosp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tfmp"]
+bg_color = Color(0, 0, 0, 0.541176)
 
 [node name="IngredientTooltip" type="PanelContainer"]
 z_index = 2
@@ -10,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5tfmp")
 script = ExtResource("1_ocosp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
