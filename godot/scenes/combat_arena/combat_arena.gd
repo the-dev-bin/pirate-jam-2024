@@ -12,6 +12,8 @@ extends Node2D
 @export var combat_end_scene: PackedScene
 @export var test_loot_table: LootTable
 
+@export var enemy_spawns: Array[EnemySpawnPoint] = []
+
 func _ready() -> void:
 	%BattleEndButton.pressed.connect(end_battle)
 	cauldron.toggle_tooltip.connect(_on_toggle_tooltip)
@@ -23,14 +25,17 @@ func _ready() -> void:
 		if enemies.size() > 2:
 			printerr('Enemies list too long')
 			return
-
-		print(enemies)
+		for i in enemies.size():
+			var enemy_spawn_point: EnemySpawnPoint = enemy_spawns[i]
+			enemy_spawn_point.spawn_enemy(enemies[i])
+			var enemy = enemy_spawn_point.get_enemy_node()
+			enemy.update_intent()
 	else:
 		printerr('State did not pass enemies to node')
-	var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
-	enemy_spawn_point.spawn_enemy(load("res://enemies/godot_enemy.tres")) # for now just spawn in an enemy manually, later have defined encounters that we load in
-	var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
-	enemy.update_intent()
+		var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
+		enemy_spawn_point.spawn_enemy(load("res://enemies/godot_enemy.tres")) # for now just spawn in an enemy manually, later have defined encounters that we load in
+		var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
+		enemy.update_intent()
 
 
 
