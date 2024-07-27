@@ -13,6 +13,7 @@ script = ExtResource("1_vl3xs")
 ingredient_name = "L Block"
 image = "res://assets/LBlock.svg"
 action = SubResource("Resource_y52xg")
+color = Color(0.996078, 0.423529, 0.564706, 1)
 base_structure = Array[Vector2]([Vector2(0, 0), Vector2(1, 0), Vector2(1, 1)])
 right_structure = Array[Vector2]([Vector2(0, 0), Vector2(0, 1), Vector2(-1, 1)])
 flipped_structure = Array[Vector2]([Vector2(0, 0), Vector2(-1, 0), Vector2(-1, -1)])

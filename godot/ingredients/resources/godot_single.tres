@@ -13,6 +13,7 @@ script = ExtResource("1_dmw50")
 ingredient_name = "Godot"
 image = "res://assets/one_block.svg"
 action = SubResource("Resource_8c46l")
+color = Color(0.996078, 0.423529, 0.564706, 1)
 base_structure = Array[Vector2]([Vector2(0, 0)])
 right_structure = Array[Vector2]([Vector2(0, 0)])
 flipped_structure = Array[Vector2]([Vector2(0, 0)])
