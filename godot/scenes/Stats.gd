@@ -29,3 +29,4 @@ func take_damage(value: int) -> void:
 func add_defense(value: int) -> void:
 	defense += value
 	defense = clamp(defense, 0, INF)
+	defense_changed.emit(defense)

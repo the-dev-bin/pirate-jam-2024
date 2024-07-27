@@ -51,4 +51,4 @@ func _on_health_changed(new_health: int) -> void:
 	health_bar.update_value(new_health)
 
 func _on_defense_changed(new_defense: int) -> void:
-	pass
+	health_bar.update_defense(new_defense)
