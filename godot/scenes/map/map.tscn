@@ -36,6 +36,7 @@ size_flags_vertical = 3
 script = ExtResource("1_gg7d2")
 map_scale = 18.425
 distance_apart = 7.44
+total_nodes = 20
 enemy_spawn_zones = Array[ExtResource("2_ji1x5")]([SubResource("Resource_igesl")])
 enemy_loot_pools = Array[ExtResource("6_dhmc2")]([ExtResource("7_xe3bf")])
 treasure_loot_pools = Array[ExtResource("6_dhmc2")]([ExtResource("7_xe3bf")])
