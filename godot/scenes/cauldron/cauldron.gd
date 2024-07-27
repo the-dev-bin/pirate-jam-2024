@@ -136,9 +136,11 @@ func _drop_data(_at_position:Vector2, data:Variant)->void:
 	elif drag_data.source:
 		pieces_on_board.push_back(drag_data.item)
 		drag_data.source.removed_from_pouch.emit()
-	drag_data.destination.add_child(temp)
+	var other_temp = Node2D.new()
+	drag_data.destination.add_child(other_temp)
+	other_temp.add_child(temp)
 	drag_data.destination.block_rotation = drag_data.block_rotation
-	# temp.rotation_degrees = drag_data.block_rotation
+	temp.rotation_degrees = drag_data.block_rotation
 	toggle_availablity_block(drag_data.destination.board_position, drag_data.item.get_structure(drag_data.block_rotation), drag_data.item, drag_data.destination)
 
 

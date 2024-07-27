@@ -92,6 +92,9 @@ layout_mode = 2
 [node name="CauldronSlot20" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
+[node name="Node2D" type="Node2D" parent="CenterContainer/SlotContainer/CauldronSlot20"]
+position = Vector2(16, 16)
+
 [node name="CauldronSlot21" parent="CenterContainer/SlotContainer" instance=ExtResource("2_h1aey")]
 layout_mode = 2
 
