@@ -20,5 +20,5 @@ func _on_pressed() -> void:
 
 func _on_card_selected(node: Node):
 	node.queue_free()
-	visible = false
+	modulate = Color.TRANSPARENT
 	
