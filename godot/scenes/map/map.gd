@@ -5,9 +5,9 @@ extends Control
 @export var total_nodes:int = 12
 @export_subgroup("Spawn pools")
 @export var enemy_spawn_zones: Array[EnemySpawnZone] = []
-@export var enemy_loot_pools: Array[EnemySpawnZone] = []
+@export var enemy_loot_pools: Array[LootTable] = []
 @export var elite_loot_pools: Array[EnemySpawnZone] = []
-@export var treasure_loot_pools: Array[EnemySpawnZone] = []
+@export var treasure_loot_pools: Array[LootTable] = []
 @export var mystery_event_pools: Array[EnemySpawnZone] = []
 enum LOOT_PROGRESSION {START, START_MID, MID, MID_END, END}
 @export_subgroup("Packed Scenes")
@@ -24,14 +24,23 @@ var map_nodes = {}
 var queued_scene: PackedScene
 
 func _ready() -> void:
-	State.map_node_parameters = {}
 	fade_overlay.on_complete_fade_out.connect(_on_fade_out_complete)
+	setup_map()
+
+func setup_map():
+	State.map_node_parameters = {}
 	if State.map_data:
 		pass
 	else:
 		var data: MapData = generate(30,total_nodes,12)
 		State.map_data = data
 	load_map(State.map_data)
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		if event.keycode == KEY_R and event.pressed:
+			State.map_data = null
+			setup_map()
 
 func load_map(map_data: MapData) -> void:
 	map_nodes = {}
@@ -69,7 +78,8 @@ func _on_map_node_pressed(index: int) -> void:
 
 	var current_node: MapNode = map_nodes[State.current_map_node]
 	State.current_map_node = index
-	if State.map_data.node_types[index] == MapNode.NODE_TYPE.COMBAT:
+	var current_node_type: MapNode.NODE_TYPE = State.map_data.node_types[index]
+	if current_node_type == MapNode.NODE_TYPE.COMBAT:
 		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
 		print(encounter.enemies[0].name)
 		queued_scene = combat_area
@@ -77,6 +87,35 @@ func _on_map_node_pressed(index: int) -> void:
 			"enemies": encounter.enemies,
 			"loot": null
 		}
+	elif current_node_type == MapNode.NODE_TYPE.BOSS:
+		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
+		print(encounter.enemies[0].name)
+		queued_scene = combat_area
+		State.map_node_parameters = {
+			"enemies": encounter.enemies,
+			"loot": null
+		}
+	elif current_node_type == MapNode.NODE_TYPE.TREASURE:
+		var loot: LootTable = treasure_loot_pools[0]
+		queued_scene = treasure_room
+		State.map_node_parameters = {
+			"loot": loot
+		}
+		pass
+	elif current_node_type == MapNode.NODE_TYPE.CAMPFIRE:
+		pass
+	elif current_node_type == MapNode.NODE_TYPE.ELITE:
+		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
+		print(encounter.enemies[0].name)
+		queued_scene = combat_area
+		State.map_node_parameters = {
+			"enemies": encounter.enemies,
+			"loot": null
+		}
+	elif current_node_type == MapNode.NODE_TYPE.MYSTERY:
+		pass
+	elif current_node_type == MapNode.NODE_TYPE.SHOP:
+		pass
 	fade_overlay.visible = true
 	fade_overlay.fade_out()
 	var temp: MapNode = map_node.instantiate()
@@ -169,12 +208,12 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 	var rng: RandomNumberGenerator = RandomNumberGenerator.new()
 	var weights: Array = [
 		10.0, # COMBAT
-		2.0, # ELITE
-		5.0, # MYSTERY
-		2.5 # SHOP
+		3.0, # ELITE
+		3.0, # MYSTERY
+		2.5, # SHOP
+		5.0, # TREASURE
 		]
 
-	
 	var total_combat: int = 0
 	while total_combat < total_nodes / 2:
 		total_combat = 0

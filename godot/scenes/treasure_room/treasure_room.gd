@@ -1,11 +1,20 @@
 extends Control
 
+@export var ingredient_pickup_button: PackedScene
 
-# Called when the node enters the scene tree for the first time.
+@onready var interaction_container: VBoxContainer = %InteractionContainer
+@onready var map_button: Button = %MapButton
 func _ready() -> void:
-	pass # Replace with function body.
+	for child in interaction_container.get_children():
+		child.queue_free()
+	var temp: IngredientPickup =	ingredient_pickup_button.instantiate()
+	var loot: LootTable = State.map_node_parameters['loot']
+	var ingredients: Array[Ingredient] = []
+	ingredients.assign(loot.get_loot(3).map(func(thing: LootTableEntry) -> Ingredient: return thing.ingredient))
+	temp.ingredients = ingredients
+	interaction_container.add_child(temp)
 
+	map_button.pressed.connect(_on_map_button_pressed)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_map_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/map/map.tscn")
