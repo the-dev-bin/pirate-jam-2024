@@ -11,3 +11,7 @@ func _ready() -> void:
 func setup(ingredient: Ingredient) -> void:
 	name_label.text = ingredient.ingredient_name
 	ability_label.text = ingredient.action.to_string()
+
+func _process(delta: float) -> void:
+	var mouse = get_global_mouse_position()
+	global_position = mouse + Vector2(20,20)
