@@ -1,5 +1,5 @@
 class_name IngredientSelectMenu
-extends Control
+extends CanvasLayer
 
 @export var ingredient_card_scene: PackedScene
 
