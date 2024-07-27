@@ -1,0 +1,72 @@
+[gd_scene load_steps=12 format=3 uid="uid://yefrl1id42su"]
+
+[ext_resource type="Script" path="res://scenes/map/map.gd" id="1_gg7d2"]
+[ext_resource type="PackedScene" uid="uid://b08icw3rhyjdm" path="res://scenes/combat_arena/combat_arena.tscn" id="2_05utw"]
+[ext_resource type="Script" path="res://scenes/map/nodes/EnemySpawnZone.gd" id="2_ji1x5"]
+[ext_resource type="Script" path="res://scenes/map/nodes/EnemySpawnEntry.gd" id="3_18wnt"]
+[ext_resource type="PackedScene" uid="uid://bjsli15ybap6k" path="res://scenes/map/nodes/map_node.tscn" id="3_q65q5"]
+[ext_resource type="Script" path="res://scenes/enemy/EnemyResource.gd" id="4_yq4ir"]
+[ext_resource type="Resource" uid="uid://s4mog50ms2x1" path="res://enemies/godot_enemy.tres" id="5_35v1j"]
+[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="8_kgtk5"]
+[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="9_wb6qe"]
+
+[sub_resource type="Resource" id="Resource_4a6q1"]
+script = ExtResource("3_18wnt")
+enemies = Array[ExtResource("4_yq4ir")]([ExtResource("5_35v1j")])
+likelihood = 10.0
+
+[sub_resource type="Resource" id="Resource_igesl"]
+script = ExtResource("2_ji1x5")
+encounters = Array[ExtResource("3_18wnt")]([SubResource("Resource_4a6q1")])
+
+[node name="Map" type="Control"]
+custom_minimum_size = Vector2(960, 640)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_gg7d2")
+map_scale = 18.425
+distance_apart = 7.44
+enemy_spawn_zones = Array[ExtResource("2_ji1x5")]([SubResource("Resource_igesl")])
+combat_area = ExtResource("2_05utw")
+map_node = ExtResource("3_q65q5")
+
+[node name="UI" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="FadeOverlay" parent="UI" instance=ExtResource("8_kgtk5")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseOverlay" parent="UI" instance=ExtResource("9_wb6qe")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.14902, 0.0509804, 0.203922, 1)
+
+[node name="MapNodeContainer" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = 51.0
+offset_top = 54.0
+offset_right = 890.0
+offset_bottom = 571.0
+size_flags_horizontal = 3
+size_flags_vertical = 3

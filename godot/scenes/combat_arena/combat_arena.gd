@@ -11,7 +11,15 @@ func _ready() -> void:
 	ingredient_pouch.toggle_tooltip.connect(_on_toggle_tooltip)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
 
+	if State.map_node_parameters.has('enemies'):
+		var enemies: Array[Enemy] = State.map_node_parameters['enemies']
+		if enemies.size() > 2:
+			printerr('Enemies list too long')
+			return
 
+		print(enemies)
+	else:
+		printerr('State did not pass enemies to node')
 	var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
 	enemy_spawn_point.spawn_enemy(load("res://enemies/godot_enemy.tres")) # for now just spawn in an enemy manually, later have defined encounters that we load in
 	var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
@@ -34,7 +42,7 @@ func _on_end_turn_button_pressed():
 	for ingredient in cauldron.get_ingredients():
 		if ingredient.action:
 			ingredient.action.process_action(player_node, [enemy], 0)
-
+	ingredient_pouch.add_blocks_to_trash(cauldron.get_ingredients())
 	cauldron.clear_board()
 
 
@@ -46,3 +54,6 @@ func _on_end_turn_button_pressed():
 	add_child(action)
 	action.process_action(player_node, [enemy], action_entry.params, enemy)
 	enemy.update_intent()
+	ingredient_pouch.clear_hand()
+	ingredient_pouch.draw_hand()
+

@@ -11,12 +11,12 @@ signal toggle_tooltip(ingredient: Ingredient, position: Variant)
 var trash: Array[Ingredient] = []
 var deck: Array[Ingredient] = []
 
+var max_hand_size = 2
 func _ready() -> void:
 	deck = State.player_deck
 	deck.shuffle()
 	# have some hand size variable here, for now this works tho
-	pull_block()
-	pull_block()
+	draw_hand()
 
 func toggle_tooltip_node(node: IngredientBlock, type: bool) -> void:
 	if type:
@@ -51,8 +51,20 @@ func move_block(node: IngredientBlock) -> void:
 	node.visible = true
 	create_tween().tween_property(node, 'global_position', saved_position, 0.5)
 
+func add_blocks_to_trash(ingredients: Array[Ingredient]) -> void:
+	for ingredient in ingredients:
+		trash.push_back(ingredient)
 
 func _on_ingredient_removed(ingredient_block: IngredientBlock) -> void:
 	ingredient_block.queue_free()
-	trash.push_back(ingredient_block.ingredient_resource)
+	# trash.push_back(ingredient_block.ingredient_resource)
 	pull_block()
+
+func clear_hand() -> void:
+	for child in ingredient_container.get_children():
+		var block: IngredientBlock = child
+		trash.push_back(block.ingredient_resource)
+		block.queue_free()
+func draw_hand() -> void:
+	for i in max_hand_size:
+		pull_block()

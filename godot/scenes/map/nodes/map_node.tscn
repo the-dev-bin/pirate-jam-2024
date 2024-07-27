@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjsli15ybap6k"]
+
+[ext_resource type="Script" path="res://scenes/map/nodes/map_node.gd" id="2_6jj6h"]
+[ext_resource type="Texture2D" uid="uid://cegte5ghg5m4l" path="res://assets/kenney_assets/board_game_icons/skull.svg" id="2_amxkw"]
+
+[node name="MapNode" type="Control" node_paths=PackedStringArray("button")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 32.0
+offset_bottom = 32.0
+script = ExtResource("2_6jj6h")
+icons = Array[String](["res://assets/kenney_assets/board_game_icons/sword.svg", "res://assets/kenney_assets/board_game_icons/skull.svg", "res://assets/kenney_assets/board_game_icons/rhombus_question.svg", "res://assets/kenney_assets/board_game_icons/dollar.svg", "res://assets/kenney_assets/board_game_icons/character.svg", "res://assets/kenney_assets/board_game_icons/campfire.svg", "res://assets/kenney_assets/board_game_icons/crown_a.svg", "res://assets/kenney_assets/board_game_icons/tag_empty.svg"])
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+mouse_default_cursor_shape = 2
+disabled = true
+icon = ExtResource("2_amxkw")
+expand_icon = true
