@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://sqg1akietuwt"]
+[gd_scene load_steps=4 format=3 uid="uid://sqg1akietuwt"]
 
 [ext_resource type="Script" path="res://scenes/treasure_room/treasure_room.gd" id="1_i2gtk"]
 [ext_resource type="PackedScene" uid="uid://d18qwoapux4ls" path="res://ui/components/card_pickup/ingredient_pickup.tscn" id="2_6jrx7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfe8q"]
+bg_color = Color(0.14902, 0.0509804, 0.203922, 1)
 
 [node name="TreasureRoom" type="PanelContainer"]
 anchors_preset = 15
@@ -9,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qfe8q")
 script = ExtResource("1_i2gtk")
 ingredient_pickup_button = ExtResource("2_6jrx7")
 

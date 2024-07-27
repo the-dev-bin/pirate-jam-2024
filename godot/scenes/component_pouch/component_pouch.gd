@@ -13,7 +13,7 @@ var deck: Array[Ingredient] = []
 
 var max_hand_size = 2
 func _ready() -> void:
-	deck = State.player_deck
+	deck = State.player_deck.duplicate()
 	deck.shuffle()
 	# have some hand size variable here, for now this works tho
 	draw_hand()
