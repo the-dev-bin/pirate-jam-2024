@@ -15,16 +15,18 @@ enum LOOT_PROGRESSION {START, START_MID, MID, MID_END, END}
 @export var treasure_room: PackedScene
 @export var shop: PackedScene
 @export var map_node: PackedScene
-
+@export var inventory_screen: PackedScene
 var map_nodes = {}
 @onready var map_node_container: Control = %MapNodeContainer
 @onready var fade_overlay: FadeOverlay = %FadeOverlay
+@onready var inventory_button: Button = %InventoryButton
 
 
 var queued_scene: PackedScene
 
 func _ready() -> void:
 	fade_overlay.on_complete_fade_out.connect(_on_fade_out_complete)
+	inventory_button.pressed.connect(_on_inventory_button_pressed)
 	setup_map()
 
 func setup_map():
@@ -93,7 +95,8 @@ func _on_map_node_pressed(index: int) -> void:
 		queued_scene = combat_area
 		State.map_node_parameters = {
 			"enemies": encounter.enemies,
-			"loot": null
+			"loot": null,
+			"boss": true
 		}
 	elif current_node_type == MapNode.NODE_TYPE.TREASURE:
 		var loot: LootTable = treasure_loot_pools[0]
@@ -101,10 +104,9 @@ func _on_map_node_pressed(index: int) -> void:
 		State.map_node_parameters = {
 			"loot": loot
 		}
-		pass
 	elif current_node_type == MapNode.NODE_TYPE.CAMPFIRE:
 		# for now just heal the player?
-		pass
+		State.player_stats.current_health = State.palyer_stats.max_health
 	elif current_node_type == MapNode.NODE_TYPE.ELITE:
 		var encounter: EnemySpawnEntry = enemy_spawn_zones[0].get_encounter()
 		print(encounter.enemies[0].name)
@@ -237,5 +239,21 @@ func generate(plane_len: int, node_count: int, path_count: int) -> MapData:
 			data.node_types[node] = genned_type
 		data.node_types[0] = MapNode.NODE_TYPE.START
 		data.node_types[1] = MapNode.NODE_TYPE.BOSS
+		for i in data.paths.size(): # this technically messes with the total combat calc /shrug
+			var path: PackedInt64Array = data.paths[i]
+			# if path.size() > 3 and data.node_types[path[3]] != MapNode.NODE_TYPE.BOSS:
+			# 	data.node_types[path[3]] = MapNode.NODE_TYPE.CAMPFIRE
+			if path[path.size()-2] and path[path.size()-2] and data.node_types[path[path.size() -2]] != MapNode.NODE_TYPE.BOSS:
+				data.node_types[path[path.size()-2]] = MapNode.NODE_TYPE.CAMPFIRE
+		for i in data.paths.size():
+			var path: PackedInt64Array = data.paths[i]
+			if path.size() < 3:
+				total_combat = 0
 	# also need to figure out resting spots
 	return data
+
+
+func _on_inventory_button_pressed():
+	print('asdboubwe')
+	var temp = inventory_screen.instantiate()
+	$CanvasLayer.add_child(temp)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq5hja7dqauom"]
+[gd_scene load_steps=3 format=3 uid="uid://cq5hja7dqauom"]
 
 [ext_resource type="Script" path="res://ui/components/health_bar/health_bar_container.gd" id="1_hcm10"]
+[ext_resource type="Texture2D" uid="uid://s8suj1n5nes6" path="res://assets/kenney_assets/board_game_icons/tag_shield.svg" id="2_ugmes"]
 
 [node name="HealthBarContainer" type="PanelContainer"]
 offset_left = -80.0
@@ -34,3 +35,20 @@ text = "/"
 unique_name_in_owner = true
 layout_mode = 2
 text = "19"
+
+[node name="DefenseIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(79, 65)
+scale = Vector2(1.79167, 1.79167)
+texture = ExtResource("2_ugmes")
+
+[node name="DefenseLabel" type="Label" parent="DefenseIcon"]
+unique_name_in_owner = true
+offset_left = -18.9767
+offset_top = -12.2791
+offset_right = 21.0233
+offset_bottom = 10.7209
+theme_override_colors/font_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+text = "3"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true

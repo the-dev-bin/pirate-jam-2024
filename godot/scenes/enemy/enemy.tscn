@@ -6,6 +6,7 @@
 
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_q3eh5")
+intent_icons = Array[String](["res://assets/kenney_assets/board_game_icons/sword.svg", "res://assets/kenney_assets/board_game_icons/tag_shield.svg"])
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -16,6 +17,7 @@ texture = ExtResource("1_q1r4t")
 unique_name_in_owner = true
 position = Vector2(2, -151)
 texture = ExtResource("1_q1r4t")
+flip_h = true
 
 [node name="HealthBarContainer" parent="." instance=ExtResource("3_oatg3")]
 unique_name_in_owner = true

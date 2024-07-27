@@ -5,6 +5,8 @@ extends Node2D
 @onready var intent_icon: Sprite2D = %IntentIcon
 @onready var health_bar = %HealthBarContainer
 
+@export_file("*svg") var intent_icons: Array[String] = []
+
 var enemy: Enemy
 var previous_action: EnemyActionEntry
 var planned_action: EnemyActionEntry
@@ -43,9 +45,10 @@ func update_intent() -> void:
 		intent_icon.modulate = Color.BLUE
 	if planned_action.intent == EnemyActionEntry.INTENT.SUPPORT:
 		intent_icon.modulate = Color.PURPLE
+	intent_icon.texture = ResourceLoader.load(intent_icons[planned_action.intent])
 
 func _on_health_changed(new_health: int) -> void:
 	health_bar.update_value(new_health)
 
 func _on_defense_changed(new_defense: int) -> void:
-	pass
+	health_bar.update_defense(new_defense)

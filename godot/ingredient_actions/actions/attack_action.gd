@@ -6,7 +6,7 @@ extends IngredientAction
 
 
 
-func process_action(_player: Node, enemies: Array[Node], targeted_enemy: int) -> void:
+func process_action(_player: Node, enemies: Array[EnemyNode], targeted_enemy: int) -> void:
 	if target == IngredientAction.TARGET.SINGLE:
 		var enemy: Node = enemies[targeted_enemy]
 		if enemy is EnemyNode:

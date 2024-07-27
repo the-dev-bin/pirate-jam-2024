@@ -16,3 +16,8 @@ var available: bool = true :
 var ingredient: Ingredient
 var parent: CauldronSlot
 var block_rotation: float
+
+
+func _notification(what:int)->void:
+	if what == Node.NOTIFICATION_DRAG_END:
+		modulate = Color.WHITE
