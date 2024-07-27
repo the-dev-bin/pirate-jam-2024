@@ -23,6 +23,7 @@ offset_right = 80.0
 offset_bottom = 120.0
 
 [node name="HealthProgressBar" type="ProgressBar" parent="HealthBarContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
