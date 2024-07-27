@@ -62,14 +62,6 @@ position = Vector2(958, 239)
 unique_name_in_owner = true
 position = Vector2(81, 203)
 
-[node name="BattleEndButton" type="Button" parent="."]
-unique_name_in_owner = true
-offset_left = 249.0
-offset_top = 511.0
-offset_right = 401.0
-offset_bottom = 542.0
-text = "End Battle (Debug)"
-
 [node name="PositionAnchor" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3

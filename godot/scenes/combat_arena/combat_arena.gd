@@ -19,7 +19,6 @@ var enemy_nodes: Array[EnemyNode] = []
 var currently_targeted_enemy: int
 
 func _ready() -> void:
-	%BattleEndButton.pressed.connect(end_battle)
 	cauldron.toggle_tooltip.connect(_on_toggle_tooltip)
 	ingredient_pouch.toggle_tooltip.connect(_on_toggle_tooltip)
 	end_turn_button.pressed.connect(_on_end_turn_button_pressed)
