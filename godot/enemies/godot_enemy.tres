@@ -8,7 +8,7 @@
 [sub_resource type="Resource" id="Resource_fro0g"]
 script = ExtResource("1_aahbp")
 likelihood = 10
-id = ""
+id = "generic_attack"
 followup = ""
 scene = ExtResource("2_tudl2")
 params = {

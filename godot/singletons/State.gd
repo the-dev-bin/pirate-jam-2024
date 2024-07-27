@@ -13,7 +13,7 @@ var map_node_parameters: Dictionary = {}
 var player_stats : Stats = Stats.new()
 
 func _init(health: int = 5, max_health: int = 10) -> void:
-  player_stats.current_health = health
+  player_stats.current_health = max_health
   player_stats.max_health = max_health
 
   print('starting health ' + str(player_stats.current_health))

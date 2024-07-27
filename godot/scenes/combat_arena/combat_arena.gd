@@ -52,9 +52,6 @@ func _on_end_turn_button_pressed():
 	ingredient_pouch.add_blocks_to_trash(cauldron.get_ingredients())
 	cauldron.clear_board()
 
-
-
-
 	# again, should eventually take into account all enemies
 	var action_entry: EnemyActionEntry = enemy.get_action()
 	var action: EnemyAction = action_entry.scene.instantiate()

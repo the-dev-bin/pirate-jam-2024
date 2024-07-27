@@ -9,6 +9,8 @@ var conditions: Array[String] # might not use yet
 signal health_changed
 signal defense_changed
 
+func _init() -> void:
+	current_health = max_health
 
 func take_damage(value: int) -> void:
 	if defense < value:
@@ -16,6 +18,7 @@ func take_damage(value: int) -> void:
 		defense -= value
 		current_health -= value
 		current_health = clamp(current_health, 0 , max_health)
+		defense = clamp(defense, 0, INF)
 		health_changed.emit(current_health)
 		defense_changed.emit(defense)
 	else:
