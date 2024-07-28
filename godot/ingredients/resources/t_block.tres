@@ -5,7 +5,7 @@
 
 [sub_resource type="Resource" id="Resource_y52xg"]
 script = ExtResource("1_43irh")
-attack_range = Array[int]([2, 3])
+attack_range = Array[int]([3, 6])
 target = 0
 
 [resource]

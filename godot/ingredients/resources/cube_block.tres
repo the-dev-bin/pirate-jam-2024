@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://8p82vshqls3p"]
+
+[ext_resource type="Script" path="res://ingredient_actions/actions/defend_action.gd" id="1_ow2ti"]
+[ext_resource type="Script" path="res://scenes/ingredient_block/ingredient_resource.gd" id="2_6un3w"]
+
+[sub_resource type="Resource" id="Resource_vvcgy"]
+script = ExtResource("1_ow2ti")
+defense_value = 10
+
+[resource]
+script = ExtResource("2_6un3w")
+ingredient_name = "Cube Block"
+image = "res://assets/CubeBlock.svg"
+action = SubResource("Resource_vvcgy")
+color = Color(0.781871, 0.0319325, 0.340096, 1)
+base_structure = Array[Vector2]([Vector2(0, 0), Vector2(0, 1), Vector2(0, 2), Vector2(1, 0), Vector2(1, 1), Vector2(1, 2), Vector2(2, 0), Vector2(2, 1), Vector2(2, 2)])
+right_structure = Array[Vector2]([Vector2(0, 0), Vector2(0, 1), Vector2(0, 2), Vector2(-1, 0), Vector2(-1, 1), Vector2(-1, 2), Vector2(-2, 0), Vector2(-2, 1), Vector2(-2, 2)])
+flipped_structure = Array[Vector2]([Vector2(0, 0), Vector2(0, -1), Vector2(0, -2), Vector2(-1, 0), Vector2(-1, -1), Vector2(-1, -2), Vector2(-2, 0), Vector2(-2, -1), Vector2(-2, -2)])
+left_structure = Array[Vector2]([Vector2(0, 0), Vector2(0, -1), Vector2(0, -2), Vector2(1, 0), Vector2(1, -1), Vector2(1, -2), Vector2(2, 0), Vector2(2, -1), Vector2(2, -2)])

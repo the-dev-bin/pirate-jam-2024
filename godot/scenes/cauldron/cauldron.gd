@@ -151,6 +151,7 @@ func get_ingredients() -> Array[Ingredient]:
 func clear_board() -> void:
 	pieces_on_board = []
 	var slot_container_children : Array[Node] = slot_container.get_children()
+	pieces_on_board = []
 	for i in slot_container_children.size():
 		var slot: Node = slot_container_children[i]
 		if slot is CauldronSlot:

@@ -1,18 +1,17 @@
 [gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://cyhd24hu3rkmq"]
 
-[ext_resource type="Script" path="res://ingredient_actions/actions/attack_action.gd" id="1_4wwl0"]
 [ext_resource type="Script" path="res://scenes/ingredient_block/ingredient_resource.gd" id="1_vl3xs"]
+[ext_resource type="Script" path="res://ingredient_actions/actions/defend_action.gd" id="1_xmaqc"]
 
-[sub_resource type="Resource" id="Resource_y52xg"]
-script = ExtResource("1_4wwl0")
-attack_range = Array[int]([1, 2])
-target = 0
+[sub_resource type="Resource" id="Resource_tha6s"]
+script = ExtResource("1_xmaqc")
+defense_value = 4
 
 [resource]
 script = ExtResource("1_vl3xs")
 ingredient_name = "L Block"
 image = "res://assets/LBlock.svg"
-action = SubResource("Resource_y52xg")
+action = SubResource("Resource_tha6s")
 color = Color(0.996078, 0.423529, 0.564706, 1)
 base_structure = Array[Vector2]([Vector2(0, 0), Vector2(1, 0), Vector2(1, 1)])
 right_structure = Array[Vector2]([Vector2(0, 0), Vector2(0, 1), Vector2(-1, 1)])
