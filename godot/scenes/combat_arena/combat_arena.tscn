@@ -15,6 +15,7 @@
 script = ExtResource("1_3j36f")
 combat_end_scene = ExtResource("2_a7uwy")
 combat_lose_scene = ExtResource("3_i56cf")
+game_end_screen = ExtResource("2_a7uwy")
 test_loot_table = ExtResource("3_g53h1")
 enemy_spawns = [NodePath("EnemySpawnPoint"), NodePath("EnemySpawnPoint2"), NodePath("EnemySpawnPoint3")]
 
