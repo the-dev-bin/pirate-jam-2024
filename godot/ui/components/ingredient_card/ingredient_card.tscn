@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://5okf568cssch" path="res://scenes/ingredient_block/ingredient_block.tscn" id="2_i72fg"]
 
 [node name="IngredientCard" type="Button"]
+z_index = 1
 custom_minimum_size = Vector2(150, 200)
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,11 +31,14 @@ horizontal_alignment = 1
 [node name="BlockContainer2" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="BlockContainer" type="Control" parent="VBoxContainer/BlockContainer2"]
 unique_name_in_owner = true
+z_index = 1
 custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="AbilityLabel" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
