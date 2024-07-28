@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://crywtu8cg1y53"]
+[gd_resource type="Resource" script_class="Ingredient" load_steps=4 format=3 uid="uid://b2pm4xtysqn01"]
 
 [ext_resource type="Script" path="res://ingredient_actions/actions/attack_action.gd" id="1_4378i"]
 [ext_resource type="Script" path="res://scenes/ingredient_block/ingredient_resource.gd" id="2_6i7m1"]

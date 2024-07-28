@@ -1,15 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://dw74q47ldjy8w"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_uqa0n"]
-[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_s86pq"]
+[ext_resource type="Texture2D" uid="uid://eme3gd7omh7u" path="res://assets/player.png" id="2_lr5om"]
 [ext_resource type="PackedScene" uid="uid://cq5hja7dqauom" path="res://ui/components/health_bar/health_bar_container.tscn" id="3_wjw0q"]
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_uqa0n")
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.514846, 0.715107, 0, 1)
-texture = ExtResource("2_s86pq")
+texture = ExtResource("2_lr5om")
 
 [node name="HealthBarContainer" parent="." instance=ExtResource("3_wjw0q")]
 unique_name_in_owner = true

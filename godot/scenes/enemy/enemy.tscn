@@ -10,8 +10,6 @@ intent_icons = Array[String](["res://assets/kenney_assets/board_game_icons/sword
 
 [node name="EnemySprite" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-modulate = Color(0.305799, 0.563055, 0.608372, 1)
-texture = ExtResource("1_q1r4t")
 
 [node name="IntentIcon" type="Sprite2D" parent="."]
 unique_name_in_owner = true
