@@ -7,11 +7,17 @@ func _ready() -> void:
 	print('current health ' + str(State.player_stats.current_health))
 	State.player_stats.health_changed.connect(_on_health_changed)
 	health_bar.setup(State.player_stats.max_health, State.player_stats.max_health)
+	State.player_stats.defense_changed.connect(_on_defense_changed)
 
 
 func damage(value: int) -> void:
 	print('taking damage of' + str(value))
 	State.player_stats.take_damage(value)
 
+
 func _on_health_changed(new_value: int) -> void:
 	health_bar.update_value(new_value)
+
+
+func _on_defense_changed(new_value: int) -> void:
+	health_bar.update_defense(new_value)
