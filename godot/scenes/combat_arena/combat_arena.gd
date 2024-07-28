@@ -61,8 +61,11 @@ func _on_end_turn_button_pressed():
 	print('ending players turn')
 	# var enemy_spawn_point: EnemySpawnPoint = $EnemySpawnPoint
 	# var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
-	if currently_targeted_enemy and enemy_nodes[currently_targeted_enemy] and enemy_nodes[currently_targeted_enemy].enemy.stats.health <= 0:
-		currently_targeted_enemy = enemy_nodes.find(func (x): return x.stats and x.stats.health > 0)
+	if currently_targeted_enemy and enemy_spawns[currently_targeted_enemy].get_enemy() and enemy_spawns[currently_targeted_enemy].get_enemy().stats.current_health <= 0:
+		for i in enemy_nodes.size():
+			if enemy_nodes[i].enemy.stats.current_health > 0:
+				currently_targeted_enemy = i
+				break
 	for ingredient in cauldron.get_ingredients():
 		if ingredient.action:
 			ingredient.action.process_action(player_node, enemy_nodes, currently_targeted_enemy)
