@@ -57,9 +57,9 @@ func _get_drag_data(_at_position:Vector2)->Variant:
 		var drag_data : ItemDrag = ItemDrag.new(hovered_node, ingredient_copy, preview)
 		set_drag_preview(preview)
 		if hovered_node.parent:
-			hovered_node.parent.get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
+			hovered_node.parent.get_child(0).get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
 		else:
-			hovered_node.get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
+			hovered_node.get_child(0).get_child(0).modulate = Color(1.0,1.0,1.0,0.4)
 		return drag_data
 	return null # make this the other way around
 	# need to make it so you can move block to a place that it currently resides in, need to toggle then add a check on drag end to check if successful and revert if not
@@ -151,6 +151,7 @@ func get_ingredients() -> Array[Ingredient]:
 func clear_board() -> void:
 	pieces_on_board = []
 	var slot_container_children : Array[Node] = slot_container.get_children()
+	pieces_on_board = []
 	for i in slot_container_children.size():
 		var slot: Node = slot_container_children[i]
 		if slot is CauldronSlot:

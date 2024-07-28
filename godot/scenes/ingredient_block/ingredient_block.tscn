@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ca1wukg6up2dy" path="res://assets/LBlock.svg" id="3_ogvbt"]
 
 [node name="IngredientBlock" type="Control"]
+modulate = Color(0.996078, 0.423529, 0.564706, 1)
 z_index = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 3

@@ -23,13 +23,15 @@ func setup(_block_data: Ingredient) -> void:
 	var size_vector: Vector2 = Vector2(max_width * block_size + block_size, max_height * block_size + block_size )
 	# size = size_vector
 	# print(size_vector)
-	# set_deferred('size', size_vector)
+	set_deferred('size', size_vector)
 	# pivot_offset = Vector2(16,16)
 	# set_deferred('size', size_vector)
+	size = size_vector
 	$TextureRect.size = size_vector
 	$TextureRect.texture = ResourceLoader.load(ingredient_resource.image)
 	if on_board:
 		mouse_filter = MOUSE_FILTER_IGNORE
+	modulate = ingredient_resource.color
 
 func parse_structure(points: Array[Vector2]) -> void:
 	for point in points:
@@ -55,4 +57,4 @@ func _get_drag_data(_at_position:Vector2)->Variant:
 
 func _notification(what:int)->void:
 	if what == Node.NOTIFICATION_DRAG_END:
-		modulate = Color.WHITE
+		modulate = ingredient_resource.color

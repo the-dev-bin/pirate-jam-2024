@@ -19,10 +19,10 @@ flat = true
 
 [node name="SelectedCrosshair" type="TextureRect" parent="."]
 unique_name_in_owner = true
-offset_left = -10.0
-offset_top = 156.0
-offset_right = 17.0
-offset_bottom = 177.0
+offset_left = -11.0
+offset_top = 93.0
+offset_right = 16.0
+offset_bottom = 114.0
 rotation = 4.71239
 texture = ExtResource("3_ptol8")
 expand_mode = 1

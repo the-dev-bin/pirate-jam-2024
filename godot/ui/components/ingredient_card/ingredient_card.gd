@@ -2,7 +2,7 @@ class_name IngredientCard
 extends Button
 
 @onready var name_label: Label = %NameLabel
-@onready var block_container: CenterContainer = %BlockContainer
+@onready var block_container: Control = %BlockContainer
 @onready var ability_label: Label = %AbilityLabel
 
 @export var ingredient_block_scene: PackedScene
