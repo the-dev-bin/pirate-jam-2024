@@ -36,6 +36,6 @@ defense = 0
 [resource]
 script = ExtResource("1_0o1tj")
 name = "Godot Test Enemy"
-sprite = "res://icon.svg"
+sprite = "res://assets/enemy.png"
 actions = Array[ExtResource("1_aahbp")]([SubResource("Resource_fro0g"), SubResource("Resource_w0tuc")])
 stats = SubResource("Resource_uq4uh")

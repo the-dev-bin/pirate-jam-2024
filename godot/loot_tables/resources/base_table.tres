@@ -4,10 +4,10 @@
 [ext_resource type="Script" path="res://loot_tables/loot_table.gd" id="1_pcdo4"]
 [ext_resource type="Resource" uid="uid://bahbxo6wc30m4" path="res://ingredients/resources/godot_single.tres" id="2_0u5as"]
 [ext_resource type="Resource" uid="uid://cyhd24hu3rkmq" path="res://ingredients/resources/l_block.tres" id="3_g1scy"]
-[ext_resource type="Resource" uid="uid://8p82vshqls3p" path="res://ingredients/resources/cube_block.tres" id="4_53rnb"]
-[ext_resource type="Resource" uid="uid://curs4gmtnp140" path="res://ingredients/resources/disconnected_block.tres" id="5_pwyps"]
-[ext_resource type="Resource" uid="uid://crywtu8cg1y53" path="res://ingredients/resources/hook_block.tres" id="6_xjkps"]
-[ext_resource type="Resource" uid="uid://dnfyhrn54p1s" path="res://ingredients/resources/t_block.tres" id="7_8ewyt"]
+[ext_resource type="Resource" uid="uid://dyinoj814hd6i" path="res://ingredients/resources/cube_block.tres" id="4_53rnb"]
+[ext_resource type="Resource" uid="uid://bmc7tg6f5xuyc" path="res://ingredients/resources/disconnected_block.tres" id="5_pwyps"]
+[ext_resource type="Resource" uid="uid://b2pm4xtysqn01" path="res://ingredients/resources/hook_block.tres" id="6_xjkps"]
+[ext_resource type="Resource" uid="uid://cu8vnp1iqf1wm" path="res://ingredients/resources/t_block.tres" id="7_8ewyt"]
 
 [sub_resource type="Resource" id="Resource_rwm6v"]
 script = ExtResource("1_5p5ur")
