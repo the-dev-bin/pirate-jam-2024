@@ -63,7 +63,8 @@ func _on_end_turn_button_pressed():
 	# var enemy: EnemyNode = enemy_spawn_point.get_enemy_node()
 	if currently_targeted_enemy and enemy_spawns[currently_targeted_enemy].get_enemy() and enemy_spawns[currently_targeted_enemy].get_enemy().stats.current_health <= 0:
 		for i in enemy_nodes.size():
-			if enemy_nodes[i].enemy.stats.current_health > 0:
+			var enemy_node = enemy_nodes[i]
+			if enemy_node.enemy.stats.current_health > 0:
 				currently_targeted_enemy = i
 				break
 	for ingredient in cauldron.get_ingredients():
@@ -79,14 +80,23 @@ func _on_end_turn_button_pressed():
 		add_child(action)
 		var alive_enemies : Array[EnemyNode] = []
 		alive_enemies.assign(get_alive_enemies().map(func (node): return node.get_enemy_node()))
+
+		for alive_enemy in alive_enemies:
+			# Subtract one defense per turn from the enemy
+			# TODO: This happens twice each time, resulting in enemies losing 2 armor per turn
+			alive_enemy.enemy.stats.add_defense(-1)
+
 		action.process_action(player_node, alive_enemies , action_entry.params, enemy)
 		enemy.update_intent()
 		ingredient_pouch.clear_hand()
 		ingredient_pouch.draw_hand()
+
 	if get_alive_enemies().size() <= 0:
 		end_battle()
 
 func end_battle():
+	# Reset the player's defense
+	State.player_stats.defense = 0
 	if State.map_node_parameters.has('boss'):
 		var thing = game_end_screen.instantiate()
 		position_anchor.add_child(thing)
