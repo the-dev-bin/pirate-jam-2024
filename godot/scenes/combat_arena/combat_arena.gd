@@ -72,6 +72,11 @@ func _on_end_turn_button_pressed():
 			ingredient.action.process_action(player_node, enemy_nodes, currently_targeted_enemy)
 	ingredient_pouch.add_blocks_to_trash(cauldron.get_ingredients())
 	cauldron.clear_board()
+	ingredient_pouch.clear_hand()
+	ingredient_pouch.draw_hand()
+
+	# 1 second delay between ending turn and enemies acting
+	await get_tree().create_timer(1).timeout
 	for enemy_spawn in get_alive_enemies():
 		# again, should eventually take into account all enemies
 		var enemy = enemy_spawn.get_enemy_node()
@@ -88,8 +93,6 @@ func _on_end_turn_button_pressed():
 
 		action.process_action(player_node, alive_enemies , action_entry.params, enemy)
 		enemy.update_intent()
-		ingredient_pouch.clear_hand()
-		ingredient_pouch.draw_hand()
 
 	if get_alive_enemies().size() <= 0:
 		end_battle()
